@@ -1,0 +1,78 @@
+\section{}
+\[
+H(s)=\frac{s+1}{s^2+2s+1}=\frac{1}{s+1}\,.
+\]
+\subsection{Bode-Diagramm}
+\begin{center}
+\begin{tikzpicture}
+\begin{semilogxaxis}[
+  width=14cm,height=6cm,
+  xmin=1e-2,xmax=1e3,
+  xlabel={$\omega$ [rad/s]},
+  ylabel={Magnitude [dB]},
+  grid=both,
+  title={Bode-Magnitude}
+]
+\addplot[
+  domain=1e-2:1e3,
+  samples=600,
+  mark=none,
+  line width=0.3pt,
+  blue
+] {-20*ln(sqrt(1 + x^2))/ln(10)};
+\addplot+[domain=1e-2:1,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {0};
+\addplot+[domain=1:1e3,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {-20*ln(x)/ln(10)};
+\draw[gray,dashed] (rel axis cs:0,0) -- (rel axis cs:0,1);
+\draw[gray,dashed] (axis cs:1,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:1,\pgfkeysvalueof{/pgfplots/ymax});
+\node[gray,anchor=south east] at (axis cs:1,\pgfkeysvalueof{/pgfplots/ymax}) {\scriptsize Pol $\omega_p=1$};
+\end{semilogxaxis}
+\end{tikzpicture}
+\vspace{6mm}
+\begin{tikzpicture}
+\begin{semilogxaxis}[
+  width=14cm,height=6cm,
+  xmin=1e-2,xmax=1e3,
+  ymin=-95,ymax=5,
+  xlabel={$\omega$ [rad/s]},
+  ylabel={Phase [°]},
+  grid=both,
+  title={Bode-Phase}
+]
+\addplot[
+  domain=1e-2:1e3,
+  samples=600,
+  mark=none,
+  line width=0.3pt,
+  blue
+] {-atan(x)};
+\addplot+[domain=1e-2:1e-1,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {0};
+\addplot+[domain=1e-1:1e1,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {-45 - 45*ln(x)/ln(10)};
+\addplot+[domain=1e1:1e3,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {-90};
+\draw[gray,dashed] (rel axis cs:0,0) -- (rel axis cs:0,1);
+\draw[gray,dashed] (axis cs:1,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:1,\pgfkeysvalueof{/pgfplots/ymax});
+\node[gray,anchor=south east] at (axis cs:1,\pgfkeysvalueof{/pgfplots/ymax}) {\scriptsize Pol $\omega_p=1$};
+\end{semilogxaxis}
+\end{tikzpicture}
+\end{center}
+\newpage
+\subsection{Erklärung}
+\vspace{5mm}
+\begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
+\item[Schritt 1] Kürzung: $s^2+2s+1=(s+1)^2\Rightarrow H(s)=\dfrac{s+1}{(s+1)^2}=\dfrac{1}{s+1}$. DC-Faktor $1$: für $\omega\ll1$ gilt $|H(\j\omega)|\approx1$; Betrag $0\,\mathrm{dB}$ ohne Anfangssteigung, Phase $\approx0^\circ$.
+\item[Schritt 2] Einfacher Pol bei $\omega_p=1\,\mathrm{rad/s}$: ab $\omega=1$ wechselt die Magnituden-Steigung um $-20\,\mathrm{dB/dec}$. Am Eckpunkt beträgt die exakte Dämpfung $-10\log_{10}2\approx-3.01\,\mathrm{dB}$ relativ zur Geraden. Phasenübergang über $\omega\in[0.1,10]$ von $0^\circ$ nach $-90^\circ$; Geradennäherung: $-45^\circ-45\log_{10}\omega$.
+\item[Schritt 3] Grenzverhalten: für $\omega\gg1$ folgt $|H(\j\omega)|_{\mathrm{dB}}\approx-20\log_{10}\omega$; die Phase nähert sich $-90^\circ$. Für $\omega\ll1$ bleibt $|H|\approx1$ und $\angle H\approx0^\circ$.
+\end{description}
+
+\vspace{0.5cm}
+\medskip
+\noindent\textbf{Stückweise Näherung}
+\[
+|H(\j\omega)|_{\mathrm{dB}}\approx
+\begin{cases}
+0,& \omega\ll1,\\[4pt]
+-10\log_{10}2,& \omega=1,\\[4pt]
+-20\log_{10}\omega,& \omega\gg1,
+\end{cases}
+\qquad
+\]
+\newpage
