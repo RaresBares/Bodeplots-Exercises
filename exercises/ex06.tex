@@ -6,23 +6,23 @@ H(s)=\frac{-1000}{(s+1)(s+100)}\,.
 \begin{center}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
-  xmin=1e-2,xmax=1e3,
+  width=14cm,height=7cm,
+  xmin=1e-2,xmax=1e4,
   xlabel={$\omega$ [rad/s]},
   ylabel={Magnitude [dB]},
   grid=both,
   title={Bode-Magnitude}
 ]
 \addplot[
-  domain=1e-2:1e3,
-  samples=600,
+  domain=1e-3:1e4,
+  samples=800,
   mark=none,
   line width=0.3pt,
   blue
 ] {60 - 20*ln(sqrt(1 + x^2))/ln(10) - 20*ln(sqrt(10000 + x^2))/ln(10)};
-\addplot+[domain=1e-2:1,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {20};
+\addplot+[domain=1e-3:1,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {20};
 \addplot+[domain=1:1e2,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {20 - 20*ln(x)/ln(10)};
-\addplot+[domain=1e2:1e3,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {-20 - 40*ln(x/100)/ln(10)};
+\addplot+[domain=1e2:1e4,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {-20 - 40*ln(x/100)/ln(10)};
 \draw[gray,dashed] (rel axis cs:0,0) -- (rel axis cs:0,1);
 \draw[gray,dashed] (axis cs:1,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:1,\pgfkeysvalueof{/pgfplots/ymax});
 \draw[gray,dashed] (axis cs:100,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:100,\pgfkeysvalueof{/pgfplots/ymax});
@@ -33,24 +33,27 @@ H(s)=\frac{-1000}{(s+1)(s+100)}\,.
 \vspace{6mm}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
-  xmin=1e-2,xmax=1e3,
-  ymin=-365,ymax=5,
+  width=14cm,height=7cm,
+  xmin=1e-3,xmax=1e4,
+  ymin=-5,ymax=185,
+  ytick distance=45,
   xlabel={$\omega$ [rad/s]},
   ylabel={Phase [°]},
   grid=both,
-  title={Bode-Phase}
+  title={Bode-Phase (um $+360^\circ$ verschoben)}
 ]
 \addplot[
-  domain=1e-2:1e3,
-  samples=600,
+  domain=1e-3:1e5,
+  samples=800,
   mark=none,
   line width=0.3pt,
   blue
-] {-180 - atan(x) - atan(x/100)};
-\addplot+[domain=1e-2:1e-1,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {-180};
-\addplot+[domain=1e-1:1e1,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {-225 - 45*ln(x)/ln(10)};
-\addplot+[domain=1e1:1e3,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {-315 - 45*ln(x/100)/ln(10)};
+] {180 - atan(x) - atan(x/100)};
+\addplot+[domain=1e-3:1e-1,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {180};
+\addplot+[domain=1e-1:1e1,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {135 - 45*ln(x)/ln(10)};
+
+\addplot+[domain=1e1:1e3,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red]{45 - 45*ln(x/100)/ln(10)};
+\addplot+[domain=1e3:1e5,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red]{0};
 \draw[gray,dashed] (rel axis cs:0,0) -- (rel axis cs:0,1);
 \draw[gray,dashed] (axis cs:1,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:1,\pgfkeysvalueof{/pgfplots/ymax});
 \draw[gray,dashed] (axis cs:100,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:100,\pgfkeysvalueof{/pgfplots/ymax});
@@ -65,9 +68,9 @@ H(s)=\frac{-1000}{(s+1)(s+100)}\,.
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
 \item[Schritt 1] Konstante und Normierung: 
 \(H(s)=\dfrac{-1000}{(s+1)(s+100)}=-10\,\dfrac{1}{(1+s)(1+s/100)}\).
-DC-Wert \(H(0)=-10\Rightarrow |H|_{\mathrm{DC}}=20\,\mathrm{dB}\). Das negative Vorzeichen erzeugt eine konstante Zusatzphase von \(-180^\circ\) über alle Frequenzen; der Betrag bleibt davon unberührt.
-\item[Schritt 2] Pol bei \(\omega_{p1}=1\,\mathrm{rad/s}\): ab \(\omega=1\) sinkt die Magnitude mit \(-20\,\mathrm{dB/dec}\). Am Eckpunkt beträgt die exakte Zusatzdämpfung \(-10\log_{10}2\approx-3.01\,\mathrm{dB}\) (gegenüber dem DC-Niveau). Der Phasenbeitrag dieses Pols fällt über die Übergangsdekade \([0.1,10]\) näherungsweise linear um \(90^\circ\); Geradennäherung relativ zur Grundlinie \(-180^\circ\): \(\varphi\approx -225^\circ-45^\circ\log_{10}\omega\) für \(\omega\in[0.1,10]\).
-\item[Schritt 3] Pol bei \(\omega_{p2}=100\,\mathrm{rad/s}\): ab \(\omega=100\) kommt eine weitere Steigungsänderung um \(-20\,\mathrm{dB/dec}\) hinzu \(\Rightarrow\) Gesamtslope \(-40\,\mathrm{dB/dec}\) für \(\omega\gg100\). Am zweiten Eckpunkt liegt die zusätzliche Eckdämpfung bei \(-10\log_{10}2\) (Summe der beiden Pol-Beiträge: ca. \(-6.02\,\mathrm{dB}\) über beide Ecken hinweg). Der zweite Pol liefert einen weiteren Phasenabfall um \(90^\circ\) in \([10,1000]\); lineare Näherung: \(\varphi\approx -315^\circ-45^\circ\log_{10}(\omega/100)\). Grenzwerte: \(|H(\j\omega)|_{\mathrm{dB}}\to -20\log_{10}\omega -20\) für \(\omega\gg100\) und \(\angle H(\j\omega)\to -360^\circ\).
+DC-Wert \(H(0)=-10\Rightarrow |H|_{\mathrm{DC}}=20\,\mathrm{dB}\). Das negative Vorzeichen bewirkt eine konstante Zusatzphase; hier wird die Phase um \(+360^\circ\) angehoben, sodass sie von \(180^\circ\) (für \(\omega\ll1\)) nach \(0^\circ\) (für \(\omega\gg100\)) verläuft.
+\item[Schritt 2] Pol bei \(\omega_{p1}=1\,\mathrm{rad/s}\): ab \(\omega=1\) sinkt die Magnitude mit \(-20\,\mathrm{dB/dec}\). Exakt: Zusatzdämpfung \(-10\log_{10}2\approx-3.01\,\mathrm{dB}\). Phasenanteil (verschoben): Geradennäherung \(135^\circ-45^\circ\log_{10}\omega\) über \([0.1,10]\).
+\item[Schritt 3] Pol bei \(\omega_{p2}=100\,\mathrm{rad/s}\): ab \(\omega=100\) weitere Steigungsänderung \(-20\,\mathrm{dB/dec}\)\(\Rightarrow\) Gesamtslope \(-40\,\mathrm{dB/dec}\) für \(\omega\gg100\). Phasenanteil (verschoben): \(45^\circ-45^\circ\log_{10}(\omega/100)\) über \([10,10^5]\). Grenzwerte: \(|H(\j\omega)|_{\mathrm{dB}}\sim -40\log_{10}(\omega/100)-20\) für \(\omega\to10^5\); \(\angle H(\j\omega)\to 0^\circ\).
 \end{description}
 
 \vspace{0.5cm}

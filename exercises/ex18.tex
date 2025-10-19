@@ -6,8 +6,10 @@ H(s)=\frac{s^2+2s+10}{s^2+2s+10}=1\,.
 \begin{center}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
+  width=14cm,height=7cm,
   xmin=1e-2,xmax=1e3,
+  ytick distance=20,
+  ytick={-20,0,20},
   xlabel={$\omega$ [rad/s]},
   ylabel={Magnitude [dB]},
   grid=both,
@@ -27,9 +29,10 @@ H(s)=\frac{s^2+2s+10}{s^2+2s+10}=1\,.
 \vspace{6mm}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
+  width=14cm,height=7cm,
   xmin=1e-2,xmax=1e3,
-  ymin=-5,ymax=95,
+  ytick distance=45,
+  ymin=-50,ymax=50,
   xlabel={$\omega$ [rad/s]},
   ylabel={Phase [°]},
   grid=both,

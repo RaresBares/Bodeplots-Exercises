@@ -6,7 +6,7 @@ H(s)=\frac{10\,(1 - s)}{s+10}\,.
 \begin{center}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
+  width=14cm,height=7cm,
   xmin=1e-2,xmax=1e3,
   xlabel={$\omega$ [rad/s]},
   ylabel={Magnitude [dB]},
@@ -17,6 +17,7 @@ H(s)=\frac{10\,(1 - s)}{s+10}\,.
   domain=1e-2:1e3,
   samples=600,
   mark=none,
+  ytick distance=10,
   line width=0.3pt,
   blue
 ] {20 + 20*ln(sqrt(1 + x^2))/ln(10) - 20*ln(sqrt(100 + x^2))/ln(10)};
@@ -33,11 +34,12 @@ H(s)=\frac{10\,(1 - s)}{s+10}\,.
 \vspace{6mm}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
+  width=14cm,height=8cm,
   xmin=1e-2,xmax=1e3,
   ymin=-185,ymax=5,
   xlabel={$\omega$ [rad/s]},
   ylabel={Phase [°]},
+  ytick distance=45,
   grid=both,
   title={Bode-Phase}
 ]
@@ -50,7 +52,7 @@ H(s)=\frac{10\,(1 - s)}{s+10}\,.
 ] {-atan(x) - atan(x/10)};
 \addplot+[domain=1e-2:1e-1,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {0};
 \addplot+[domain=1e-1:1e0,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {-45 - 45*ln(x)/ln(10)};
-\addplot+[domain=1e0:1e1,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {-45 - 45*ln(x/10)/ln(10)};
+\addplot+[domain=1e0:1e1,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red]{-45 - 90*ln(x)/ln(10)};
 \addplot+[domain=1e1:1e2,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {-135 - 45*ln(x/10)/ln(10)};
 \addplot+[domain=1e2:1e3,samples=2,dashed,dash pattern=on 3pt off 2pt,line width=0.6pt,red] {-180};
 \draw[gray,dashed] (rel axis cs:0,0) -- (rel axis cs:0,1);

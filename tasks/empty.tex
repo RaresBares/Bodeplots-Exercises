@@ -1,0 +1,105 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{tikz}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\bfseries\centering}{}{0pt}{}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{0.4pt} % Fügt eine Linie oberhalb der Fußzeile hinzu (optional)
+\fancyhf{} % Leert alle Kopf- und Fußzeilen
+\fancyfoot[L]{Rares Sahleanu}         % Links
+\fancyfoot[C]{Laboratory for High Power Electronic Systems}    % Mitte
+\fancyfoot[R]{\today}                 % Rechts (automatisches Datum)
+
+% Makro für einen Bodeplot auf einer Seite
+\newcommand{\bodeplot}[1]{
+\section*{Aufgabe (#1)}
+
+\vspace{0.8em}
+\begin{center}
+\textbf{Betragsverlauf (in dB)}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{semilogxaxis}[
+    width=0.95\textwidth,
+    height=8.5cm,
+    xmin=0.01, xmax=1000,
+    ymin=-60, ymax=60,
+    xlabel={Frequenz \(\omega\) [rad/s]},
+    ylabel={Betrag [dB]},
+    grid=both,
+    major grid style={line width=.2pt,draw=gray!50},
+    minor grid style={line width=.1pt,draw=gray!30},
+    axis lines=left,
+    xtick={1e-3,0.01,0.1,1,10,100,1000},
+    ytick={-60,-40,-20,0,20,40,60}
+]
+\end{semilogxaxis}
+\end{tikzpicture}
+\end{center}
+
+\vspace{1.5em}
+\begin{center}
+\textbf{Phasenverlauf (in Grad)}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{semilogxaxis}[
+    width=0.95\textwidth,
+    height=8.5cm,
+    xmin=0.01, xmax=1000,
+    ymin=-180, ymax=180,
+    xlabel={Frequenz \(\omega\) [rad/s]},
+    ylabel={Phase [\(^\circ\)]},
+    grid=both,
+    major grid style={line width=.2pt,draw=gray!50},
+    minor grid style={line width=.1pt,draw=gray!30},
+    axis lines=left,
+    xtick={1e-3,0.01,0.1,1,10,100,1000},
+    ytick={-180,-135,-90,-45,0,45,90,135,180}
+]
+\end{semilogxaxis}
+\end{tikzpicture}
+\end{center}
+
+\newpage
+}
+
+\begin{document}
+
+\title{Lösungsblatt für Aufgaben (a)–(v)}
+\date{}
+\newpage{}
+
+
+% Aufrufe für Aufgaben (a) bis (v)
+\bodeplot{a}
+\bodeplot{b}
+\bodeplot{c}
+\bodeplot{d}
+\bodeplot{e}
+\bodeplot{f}
+\bodeplot{g}
+\bodeplot{h}
+\bodeplot{i}
+\bodeplot{j}
+\bodeplot{k}
+\bodeplot{l}
+\bodeplot{m}
+\bodeplot{n}
+\bodeplot{o}
+\bodeplot{p}
+\bodeplot{q}
+\bodeplot{r}
+\bodeplot{s}
+\bodeplot{t}
+\bodeplot{u}
+
+\end{document}

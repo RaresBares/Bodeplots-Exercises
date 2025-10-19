@@ -6,7 +6,8 @@ H(s)=\frac{1}{s}\,.
 \begin{center}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
+  width=14cm,height=7cm,
+  ytick distance=20,
   xmin=1e-2,xmax=1e3,
   xlabel={$\omega$ [rad/s]},
   ylabel={Magnitude [dB]},
@@ -27,9 +28,10 @@ H(s)=\frac{1}{s}\,.
 \vspace{6mm}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
+  width=14cm,height=7cm,
   xmin=1e-2,xmax=1e3,
-  ymin=-95,ymax=5,
+  ymin=-140,ymax=-40,
+  ytick distance=45,
   xlabel={$\omega$ [rad/s]},
   ylabel={Phase [°]},
   grid=both,

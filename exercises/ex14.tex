@@ -6,7 +6,8 @@ H(s)=\frac{s\,(0.1 - s)\,(s+10)}{(s+1)^2}\,.
 \begin{center}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
+  width=14cm,height=7cm,
+  ytick distance=20,
   xmin=1e-2,xmax=1e3,
   xlabel={$\omega$ [rad/s]},
   ylabel={Magnitude [dB]},
@@ -39,8 +40,9 @@ H(s)=\frac{s\,(0.1 - s)\,(s+10)}{(s+1)^2}\,.
 \vspace{6mm}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
+  width=14cm,height=7cm,
   xmin=1e-2,xmax=1e3,
+  ytick distance=45,
   ymin=-185,ymax=95,
   xlabel={$\omega$ [rad/s]},
   ylabel={Phase [°]},

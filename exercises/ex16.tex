@@ -6,10 +6,11 @@ H(s)=\frac{100}{s^2+s+100}\,.
 \begin{center}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
+  width=14cm,height=7cm,
   xmin=1e-2,xmax=1e3,
   xlabel={$\omega$ [rad/s]},
   ylabel={Magnitude [dB]},
+  ytick distance=20,
   grid=both,
   title={Bode-Magnitude}
 ]
@@ -30,9 +31,10 @@ H(s)=\frac{100}{s^2+s+100}\,.
 \vspace{6mm}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
+  width=14cm,height=7cm,
   xmin=1e-2,xmax=1e3,
   ymin=-185,ymax=5,
+  ytick distance=45,
   xlabel={$\omega$ [rad/s]},
   ylabel={Phase [°]},
   grid=both,

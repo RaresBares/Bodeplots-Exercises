@@ -1,0 +1,91 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Kernkompetenz – Bodeplots zeichnen}
+\date{}
+\author{Rares Sahleanu}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+Zeichnen Sie jeweils den Bode-Plot der folgenden Übertragungsfunktionen \( H(s) \).\\[1em]
+
+\newcommand{\aufgabe}[2]{
+  \parbox[t]{0.48\textwidth}{
+    \textbf{(#1)} \quad \Large\( #2 \)
+  }
+}
+
+% --- Aufgaben (a) bis (p): Einfach bis mittel ---
+
+\aufgabe{a}{H(s) = \frac{1}{s + 1}}
+\hfill
+\aufgabe{b}{H(s) = \frac{10}{s + 10}}
+
+\vspace{1.5em}
+
+\aufgabe{c}{H(s) = \frac{s + 1}{s + 10}}
+\hfill
+\aufgabe{d\textbf{$\star$}}{H(s) = \frac{10(1-s)}{s + 10}}
+
+\vspace{1.5em}
+
+\aufgabe{e\textbf{$\star$}}{H(s) = \frac{(-1+1j)}{\sqrt{2}(s + 1)^2}}
+\hfill
+\aufgabe{f}{H(s) = \frac{-1000}{(s + 1)(s + 100)}}
+
+\vspace{1.5em}
+
+\aufgabe{g}{H(s) = \frac{\sqrt{2}100s}{s + 1}}
+\hfill
+\aufgabe{h}{H(s) = \frac{\sqrt{2} 10s^2}{s - 1}}
+
+\vspace{1.5em}
+
+\aufgabe{i}{H(s) = \frac{(s + 1)}{(s + 10)^2}}
+\hfill
+\aufgabe{j}{H(s) = \frac{s + 1}{s^2 + 2s + 1}}
+
+\vspace{1.5em}
+
+\aufgabe{k}{H(s) = \frac{100(s + 1)}{s^2 + 20s + 100}}
+\hfill
+\aufgabe{l}{H(s) = \frac{s^2 - 100}{(s + 1)}}
+
+\vspace{1.5em}
+
+\aufgabe{m}{H(s) = \frac{\sqrt{202}10s}{(s + 1)(s + 10)}}
+\hfill
+\aufgabe{n\textbf{$\star$}}{H(s) = \frac{s(0.1-s)(s + 10)}{(s + 1)^2}}
+
+\vspace{1.5em}
+
+\aufgabe{o}{H(s) = \frac{1}{s}}
+\hfill
+\aufgabe{p\textbf{$\star$}}{H(s) = \frac{100}{(s^2 + 1s + 100)}}
+
+
+\vspace{1.5em}
+
+% --- Aufgaben (q) bis (t): schwerer, nicht faktorisiert ---
+
+\aufgabe{q\textbf{$\star$}\textbf{$\star$}}{H(s) = \frac{s^2 + 4}{s(s^2 + 10s + 100)}}
+\hfill
+\aufgabe{r}{H(s) = \frac{s^2 + 2s + 10}{s^2 + 2s + 10}}
+
+\vspace{1.5em}
+
+\aufgabe{s}{H(s) = \frac{4}{s^2 - 4}}
+\hfill
+\aufgabe{t\textbf{$\star$}}{H(s) = \frac{-1000(s + 2)^2}{4(s + 1)^3(s + 10)}}
+
+\hfill
+
+\aufgabe{u}{H(s) = \frac{2s}{s^2 + 2s + 1}}
+
+\end{document}

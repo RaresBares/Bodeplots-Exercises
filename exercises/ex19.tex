@@ -6,9 +6,10 @@ H(s)=\frac{4}{s^2-4}=\frac{4}{(s-2)(s+2)}\,.
 \begin{center}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
+  width=14cm,height=7cm,
   xmin=1e-2,xmax=1e3,
   xlabel={$\omega$ [rad/s]},
+  ytick distance=45,
   ylabel={Magnitude [dB]},
   grid=both,
   title={Bode-Magnitude}
@@ -30,9 +31,10 @@ H(s)=\frac{4}{s^2-4}=\frac{4}{(s-2)(s+2)}\,.
 \vspace{6mm}
 \begin{tikzpicture}
 \begin{semilogxaxis}[
-  width=14cm,height=6cm,
+  width=14cm,height=7cm,
   xmin=1e-2,xmax=1e3,
-  ymin=-185,ymax=5,
+  ymin=-230,ymax=-130,
+  ytick distance = 45,
   xlabel={$\omega$ [rad/s]},
   ylabel={Phase [°]},
   grid=both,
