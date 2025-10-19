@@ -59,9 +59,9 @@ H(s)=\frac{-1+\j}{\sqrt{2}\,(s+1)^2}\,.
 \subsection{Erklärung}
 \vspace{5mm}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] Konstanter Faktor $(-1+\j)/\sqrt{2}=\mathrm{e}^{\j135^\circ}$: Betrag $1\Rightarrow$ Start bei $0\,\mathrm{dB}$ ohne Anfangssteigung; die Phase ist über alle Frequenzen um $+135^\circ$ verschoben (reiner Phasor, kein Einfluss auf die Magnitude).
-\item[Schritt 2] Doppelpol bei $\omega_p=1\,\mathrm{rad/s}$: ab $\omega=1$ sinkt die Magnitude mit $-40\,\mathrm{dB/dec}$; am Eckpunkt beträgt die exakte Dämpfung $-20\log_{10}(1+1)= -20\log_{10}2\approx-6.02\,\mathrm{dB}$ (Summe aus zwei $\,-3.01\,\mathrm{dB}$). Die Phase der beiden gleichliegenden Pole fällt zusammen in der Übergangsdekade $\omega\in[0.1,10]$ insgesamt um $180^\circ$; lineare Geradennäherung: $135^\circ\to-45^\circ$ mit $\;\varphi_{\text{approx}}(\omega)=45^\circ-90^\circ\log_{10}\omega$ für $\omega\in[0.1,10]$.
-\item[Schritt 3] Grenzverhalten: für $\omega\ll1$ gilt $|H(\j\omega)|_{\mathrm{dB}}\approx0\,\mathrm{dB}$ und $\angle H\approx+135^\circ$; für $\omega\gg1$ folgt $|H(\j\omega)|_{\mathrm{dB}}\approx-40\log_{10}\omega$ und die Phase nähert sich $+135^\circ-2\cdot90^\circ=-45^\circ$ an.
+\item[Schritt 1] Konstanter Faktor $(-1+\j)/\sqrt{2}=\mathrm{e}^{\j135^\circ}$: Betrag $1\Rightarrow$ Start bei $0\,\mathrm{dB}$ ohne Anfangssteigung; die Phase "fängt" bei $+135^\circ$ an (reiner Phasor, kein Einfluss auf die Magnitude).
+\item[Schritt 2] Doppelpol bei $\omega_p=1\,\mathrm{rad/s}$: ab $\omega=1$ sinkt die Magnitude mit $-40\,\mathrm{dB/dec}$; am Eckpunkt beträgt die exakte Dämpfung $-20\log_{10}(1+1)= -20\log_{10}2\approx-6\,\mathrm{dB}$ (Summe aus zwei $\,-3.01\,\mathrm{dB}$). Die Phase der beiden gleichliegenden Pole fällt zusammen in der Übergangsdekade $\omega\in[0.1,10]$ insgesamt um $180^\circ$; lineare Geradennäherung: $135^\circ\to-45^\circ$ mit $\;\varphi_{\text{approx}}(\omega)=45^\circ-90^\circ\log_{10}\omega$ für $\omega\in[0.1,10]$.
+\item[Schritt 3] Grenzverhalten: für $\omega\ll1$ gilt $|H(\j\omega)|_{\mathrm{dB}}\approx0\,\mathrm{dB}$ und $\angle H\approx+135^\circ$ für $\omega\ll0.1$; für $\omega\gg1$ folgt $|H(\j\omega)|_{\mathrm{dB}}\approx-40\log_{10}\omega$ und die Phase nähert sich $+135^\circ-2\cdot90^\circ=-45^\circ$ an.
 \end{description}
 
 \vspace{0.5cm}

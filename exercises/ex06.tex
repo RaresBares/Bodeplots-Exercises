@@ -8,6 +8,7 @@ H(s)=\frac{-1000}{(s+1)(s+100)}\,.
 \begin{semilogxaxis}[
   width=14cm,height=7cm,
   xmin=1e-2,xmax=1e4,
+  ytick distance=20,
   xlabel={$\omega$ [rad/s]},
   ylabel={Magnitude [dB]},
   grid=both,
@@ -67,10 +68,10 @@ H(s)=\frac{-1000}{(s+1)(s+100)}\,.
 \vspace{5mm}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
 \item[Schritt 1] Konstante und Normierung: 
-\(H(s)=\dfrac{-1000}{(s+1)(s+100)}=-10\,\dfrac{1}{(1+s)(1+s/100)}\).
-DC-Wert \(H(0)=-10\Rightarrow |H|_{\mathrm{DC}}=20\,\mathrm{dB}\). Das negative Vorzeichen bewirkt eine konstante Zusatzphase; hier wird die Phase um \(+360^\circ\) angehoben, sodass sie von \(180^\circ\) (für \(\omega\ll1\)) nach \(0^\circ\) (für \(\omega\gg100\)) verläuft.
-\item[Schritt 2] Pol bei \(\omega_{p1}=1\,\mathrm{rad/s}\): ab \(\omega=1\) sinkt die Magnitude mit \(-20\,\mathrm{dB/dec}\). Exakt: Zusatzdämpfung \(-10\log_{10}2\approx-3.01\,\mathrm{dB}\). Phasenanteil (verschoben): Geradennäherung \(135^\circ-45^\circ\log_{10}\omega\) über \([0.1,10]\).
-\item[Schritt 3] Pol bei \(\omega_{p2}=100\,\mathrm{rad/s}\): ab \(\omega=100\) weitere Steigungsänderung \(-20\,\mathrm{dB/dec}\)\(\Rightarrow\) Gesamtslope \(-40\,\mathrm{dB/dec}\) für \(\omega\gg100\). Phasenanteil (verschoben): \(45^\circ-45^\circ\log_{10}(\omega/100)\) über \([10,10^5]\). Grenzwerte: \(|H(\j\omega)|_{\mathrm{dB}}\sim -40\log_{10}(\omega/100)-20\) für \(\omega\to10^5\); \(\angle H(\j\omega)\to 0^\circ\).
+\(H(s)=...=-10\,\dfrac{1}{(1+s)(1+s/100)}\).
+DC-Wert \(H(0)=-10\Rightarrow |H|_{\mathrm{DC}}=20\,\mathrm{dB}\). Das negative Vorzeichen bewirkt eine konstante Zusatzphase; hier wird die Phase, aus Darstellungsgründen, um \(+360^\circ\) angehoben, sodass sie von \(180^\circ\) (für \(\omega\ll1\)) nach \(0^\circ\) (für \(\omega\gg100\)) verläuft.
+\item[Schritt 2] Pol bei \(\omega_{p1}=1\,\mathrm{rad/s}\): ab \(\omega=1\) sinkt die Magnitude mit \(-20\,\mathrm{dB/dec}\). Exakt: Zusatzdämpfung \(-10\log_{10}2\approx-3\,\mathrm{dB}\). Phasenanteil (verschoben): Geradennäherung \(135^\circ-45^\circ\log_{10}\omega\) über \([0.1,10]\) zu $90^\circ$.
+\item[Schritt 3] Pol bei \(\omega_{p2}=100\,\mathrm{rad/s}\): ab \(\omega=100\) weitere Steigungsänderung \(-20\,\mathrm{dB/dec}\)\(\Rightarrow\) Gesamtslope \(-40\,\mathrm{dB/dec}\) für \(\omega\gg100\). Phasenanteil (verschoben): \(45^\circ-45^\circ\log_{10}(\omega/100)\) über \([10,10^5]\). Grenzwerte: \(|H(\j\omega)|_{\mathrm{dB}}\sim -40\log_{10}(\omega/100)+20\); \(\angle H(\j\omega)\to 0^\circ\) für \(\omega\to10^5\).
 \end{description}
 
 \vspace{0.5cm}
