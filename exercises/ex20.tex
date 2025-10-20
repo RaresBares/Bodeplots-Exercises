@@ -78,3 +78,26 @@ H(s)=\frac{-1000\,(s+2)^2}{4\,(s+1)^3\,(s+10)}=-250\,\frac{(s+2)^2}{(s+1)^3\,(s+
 \end{tikzpicture}
 \end{center}
 \newpage
+
+\subsection{Erklärung}
+\vspace{5mm}
+\begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
+\item[Schritt 1] Konstante \& Vorzeichen: $H(0)=-100\Rightarrow |H|_{\mathrm{DC}}=40\,\mathrm{dB}$, Anfangssteigung $0\,\mathrm{dB/dec}$. Die Darstellung ist um $+360^\circ$ verschoben: Startphase $180^\circ$ (das negative Vorzeichen).
+\item[Schritt 2] Dreifachpol bei $\omega=1\,\mathrm{rad/s}$: ab $\omega=1$ Steigungsänderung um $-60\,\mathrm{dB/dec}$; Exakte Abweichung ggü. Geradennäherung $-3\cdot10\log_{10}2\approx-9\,\mathrm{dB}$. Phasenabfall dieses Poltripels über $\omega\in[0.1,10]$ um $270^\circ$.
+\item[Schritt 3] Doppelnullstelle bei $\omega=2\,\mathrm{rad/s}$ und Pol bei $\omega=10\,\mathrm{rad/s}$: die Doppelnull hebt die Slope ab $\omega=2$ um $+40\,\mathrm{dB/dec}$ (Netto $-20\,\mathrm{dB/dec}$ in $(2,10)$), der Pol bei $\omega=10$ senkt sie um weitere $-20\,\mathrm{dB/dec}$ (Netto $-40\,\mathrm{dB/dec}$ für $\omega\gg10$). Phasenbeiträge: $+180^\circ$ der Doppelnullstelle über $[0.2,20]$, $-90^\circ$ des Pols bei $10$ über $[1,100]$; Die Phase verläuft von $180^\circ$ ($\omega \ll 0.1$) gegen $0^\circ$ ($100 \ll \omega$).
+\end{description}
+
+\vspace{0.5cm}
+\medskip
+\noindent\textbf{Stückweise Näherung}
+\[
+|H(\j\omega)|_{\mathrm{dB}}\approx
+\begin{cases}
+40,& \omega\ll1,\\[4pt]
+40-60\log_{10}\omega,& 1\ll\omega\ll2,\\[4pt]
+40-60\log_{10}2-20\log_{10}(\omega/2),& 2\ll\omega\ll10,\\[4pt]
+40-60\log_{10}2-20\log_{10}5-40\log_{10}(\omega/10),& \omega\gg10,
+\end{cases}
+\qquad
+\]
+\newpage

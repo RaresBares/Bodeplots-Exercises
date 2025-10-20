@@ -62,8 +62,8 @@ H(s)=\frac{100}{s^2+s+100}\,.
 \vspace{5mm}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
 \item[Schritt 1] Normform: $s^2+s+100=\omega_n^2\!\left[\left(\tfrac{s}{\omega_n}\right)^2+2\zeta\left(\tfrac{s}{\omega_n}\right)+1\right]$ mit $\omega_n=10$ und $\zeta=\tfrac{1}{2\omega_n}=0.05$. DC-Faktor $100/100=1\Rightarrow 0\,\mathrm{dB}$ ohne Anfangssteigung; Startphase $\approx0^\circ$.
-\item[Schritt 2] Konjugiertes Polpaar: Break bei $\omega_n=10$. Asymptote $0\,\mathrm{dB}$ für $\omega\ll10$, ab $\omega=10$ Slope $-40\,\mathrm{dB/dec}$. Exakt liegt am Eigenkreis die Verstärkung bei $|H(\j\omega_n)|=\tfrac{1}{2\zeta}=10\Rightarrow20\,\mathrm{dB}$ (ausgeprägte Resonanzspitze wegen kleiner $\zeta$).
-\item[Schritt 3] Phase: Gesamtabfall um $180^\circ$ um $\omega_n$, für die Geradennäherung über zwei Dekaden verteilt ($[1,100]$): $0^\circ\to-90^\circ$ in $[1,10]$, weiter $-90^\circ\to-180^\circ$ in $[10,100]$. Für $\omega\gg10$ nähert sich $|H|\sim \omega^{-2}$ und $\angle H\to-180^\circ$.
+\item[Schritt 2] Konjugiertes Polpaar: Resonanz bei $\omega_n=10$. Asymptote $0\,\mathrm{dB}$ für $\omega\ll10$, ab $\omega=10$ Slope $-40\,\mathrm{dB/dec}$. Exakt liegt die Verstärkung bei Resonanz bei $|H(\j\omega_n)|=\tfrac{1}{2\zeta}=10\Rightarrow20\,\mathrm{dB}$.
+\item[Schritt 3] Phase: Gesamtabfall\footnote{Im exakten Verlauf kippt die Phase schneller als von der Geradennäherung prognostiziert; Ursache ist das sehr kleine \(\zeta\). Je kleiner \(\zeta\), desto abrupter der Phasenübergang und desto schmaler sowie ausgeprägter die Resonanz im Magnitudenplot. Die handschriftliche Bode-Näherung ist hier grob; die genaue Lage der roten Segmente bleibt eine Abschätzung.} um $180^\circ$ um $\omega_n$, für die Geradennäherung über zwei Dekaden verteilt ($[1,100]$): $0^\circ\to-90^\circ$ in $[1,10]$, weiter $-90^\circ\to-180^\circ$ in $[10,100]$. Für $\omega\gg10$ nähert sich $\angle H\to-180^\circ$.
 \end{description}
 
 \vspace{0.5cm}

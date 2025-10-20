@@ -11,6 +11,7 @@ H(s)=\frac{s^2-100}{s+1}=\frac{(s-10)(s+10)}{s+1}\,.
   xlabel={$\omega$ [rad/s]},
   ylabel={Magnitude [dB]},
   grid=both,
+  ytick distance=20,
   title={Bode-Magnitude}
 ]
 \addplot[
@@ -64,9 +65,9 @@ H(s)=\frac{s^2-100}{s+1}=\frac{(s-10)(s+10)}{s+1}\,.
 \subsection{Erklärung}
 \vspace{5mm}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] Struktur: $H(s)=\dfrac{(s-10)(s+10)}{s+1}$. Für $\omega\ll1$ ist $|H(\j\omega)|\approx\dfrac{100}{1}=100\Rightarrow 40\,\mathrm{dB}$ ohne Startsteigung. Der Zähler $(\j\omega)^2-100=-(\omega^2+100)$ ist für alle $\omega$ reell-negativ $\Rightarrow$ konstante Phasenlage $+180^\circ$ relativ zum Nenner.
-\item[Schritt 2] Pol bei $\omega_p=1\,\mathrm{rad/s}$: ab $\omega=1$ Steigungswechsel um $-20\,\mathrm{dB/dec}$; am Eckpunkt exakte Dämpfung $-10\log_{10}2\approx-3.01\,\mathrm{dB}$ gegenüber der linken Geraden. Phasenabnahme des Pols um $90^\circ$ über $\omega\in[0.1,10]$; Geradennäherung $135^\circ-45^\circ\log_{10}\omega$ (von $180^\circ$ auf $90^\circ$).
-\item[Schritt 3] Nullstellen bei $\omega_z=10\,\mathrm{rad/s}$ (eine LHP, eine RHP): Magnitudenbeitrag von zwei Nullstellen $\Rightarrow$ zusätzliche $+40\,\mathrm{dB/dec}$ ab $\omega=10$; Gesamtslope wird $+20\,\mathrm{dB/dec}$ für $\omega\gg10$. Am Eckpunkt $\omega=10$ liegt $|H(\j10)|_{\mathrm{dB}}\approx20+6.02=26.0\,\mathrm{dB}$. Die Phaseninkremente der LHP- und RHP-Nullstelle heben sich gegenseitig auf; netto entsteht an $\omega=10$ keine zusätzliche Phasenänderung (die konstante $+180^\circ$ ist bereits berücksichtigt).
+\item[Schritt 1] Struktur: $H(s)=\dfrac{(s-10)(s+10)}{s+1}$. Für $\omega\ll1$ ist $|H(\j\omega)|\approx\dfrac{100}{1}=100\Rightarrow 40\,\mathrm{dB}$ ohne Startsteigung. $H(0) = -100 = 100 e^{+j180^\circ}$ $\Rightarrow$ konstante Phasenlage $+180^\circ$.
+\item[Schritt 2] Pol bei $\omega_p=1\,\mathrm{rad/s}$: ab $\omega=1$ Steigungswechsel um $-20\,\mathrm{dB/dec}$; am Eckpunkt exakte Dämpfung $-10\log_{10}2\approx-3\,\mathrm{dB}$ gegenüber der linken Geraden. Phasenabnahme des Pols um $90^\circ$ über $\omega\in[0.1,10]$; Geradennäherung $135^\circ-45^\circ\log_{10}\omega$ (von $180^\circ$ auf $90^\circ$).
+\item[Schritt 3] Nullstellen bei $\omega_z=10\,\mathrm{rad/s}$ (eine LHP, eine RHP): Magnitudenbeitrag von zwei Nullstellen $\Rightarrow$ zusätzliche $+40\,\mathrm{dB/dec}$ ab $\omega=10$; Netto-Gesamtslope wird $+20\,\mathrm{dB/dec}$ für $\omega\gg10$. Am Eckpunkt $\omega=10$ liegt $|H(\j10)|_{\mathrm{dB}}\approx20+6=26.0\,\mathrm{dB}$. Die Phasenänderungen der LHP- und RHP-Nullstelle heben sich gegenseitig auf; Netto entsteht an $\omega=10$ keine zusätzliche Phasenänderung (die konstanten $+180^\circ$ sind bereits berücksichtigt).
 \end{description}
 
 \vspace{0.5cm}

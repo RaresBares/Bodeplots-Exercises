@@ -58,8 +58,8 @@ H(s)=\frac{4}{s^2-4}=\frac{4}{(s-2)(s+2)}\,.
 \subsection{Erklärung}
 \vspace{5mm}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] Faktorisierung: $H(s)=\dfrac{4}{(s-2)(s+2)}$. DC-Wert $H(0)=-1\Rightarrow |H|_{\mathrm{DC}}=0\,\mathrm{dB}$; das negative Vorzeichen liefert eine konstante Zusatzphase von $-180^\circ$. Anfangssteigung $0\,\mathrm{dB/dec}$.
-\item[Schritt 2] Pole bei $\omega_p=2\,\mathrm{rad/s}$ (einer RHP, einer LHP): Magnitudenbeitrag entspricht einem Doppelpol bei $\omega=2$ $\Rightarrow$ ab $\omega=2$ Slope $-40\,\mathrm{dB/dec}$. Am Eckpunkt exakte Dämpfung $-20\log_{10}2\approx-6.02\,\mathrm{dB}$. Phasenverlauf: die variablen Beiträge der LHP- und RHP-Polphase heben sich auf; netto bleibt die Phase für alle $\omega$ konstant $-180^\circ$ (nicht-minimumphasig wegen RHP-Pol).
+\item[Schritt 1] Faktorisierung: $H(s)=\dfrac{4}{(s-2)(s+2)}$. DC-Wert $H(0)=-1\Rightarrow |H|_{\mathrm{DC}}=0\,\mathrm{dB}$; das negative Vorzeichen liefert eine konstante Phase von $-180^\circ$. Anfangssteigung $0\,\mathrm{dB/dec}$.
+\item[Schritt 2] Pole bei $\omega_p=2\,\mathrm{rad/s}$ (einer RHP, einer LHP): Magnitudenbeitrag entspricht einem Doppelpol bei $\omega=2$ $\Rightarrow$ ab $\omega=2$ Slope $-40\,\mathrm{dB/dec}$. Am Eckpunkt exakte Dämpfung $-20\log_{10}2\approx-6\,\mathrm{dB}$. Phasenverlauf: die entgegengesetzen Beiträge der LHP- und RHP-Polphase heben sich auf; netto bleibt die Phase für alle $\omega$ konstant $-180^\circ$.
 \item[Schritt 3] Grenzverhalten: für $\omega\ll2$ bleibt $|H(\j\omega)|\approx1$; für $\omega\gg2$ folgt $|H(\j\omega)|_{\mathrm{dB}}\approx-40\log_{10}(\omega/2)$; die Phase bleibt über das gesamte Spektrum bei $-180^\circ$.
 \end{description}
 

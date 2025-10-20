@@ -1,27 +1,72 @@
 \documentclass[a4paper,12pt]{article}
-\usepackage[utf8]{inputenc}
+
+% --- Präambel (wie main, inkl. Header-Stil) ---
+\usepackage{graphicx}
 \usepackage{amsmath}
-\usepackage{geometry}
-\geometry{margin=2.5cm}
+\usepackage{siunitx}
+\sisetup{per-mode=symbol,exponent-product=\cdot,range-phrase=\ldots}
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+% Header-/Titelseitenstil mit Logos; Pfad von ./tasks aus:
+\usepackage{../tex/ET_Ueb_Header_2Ebenen} % falls die Datei ET_Ueb_Header.sty heißt: ../tex/ET_Ueb_Header
+% zusätzliche Grafikpfade (Root & tasks):
+\graphicspath{{../}{../templates/}{../fig/}{./}{./templates/}{./fig/}}
+
+% Formatierung (wie main)
+\renewcommand\thesection{\Alph{section}}
+\titleformat{\section}[hang]{\normalfont\Large\bfseries}{Aufgabe \thesection)}{.8em}{}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\titleformat{\subsection}[hang]{\normalfont\large\bfseries}{\thesubsection}{.8em}{}
+\setlist[enumerate,1]{label=\thesubsection),ref=\thesubsection)}
+
+% Makros (wie main)
+\let\cpx\underline
+\let\peak\hat
+\newcommand\pcpx[1]{\peak{\cpx{#1}}}
+\let\avg\overline
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\dd}{\;\mathrm{d}}
+\renewcommand{\d}{\operatorname{d}\!}
+\renewcommand{\j}{\operatorname{j}\!}
+\newcommand{\conj}[1]{{#1}^\ast}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\cmat}[1]{\mat{\cpx{#1}}}
+\makeatletter
+\@ifundefined{Header}{\let\Header\makeheader}{}
+\makeatother
 
 \title{Kernkompetenz – Bodeplots zeichnen}
+\author{}
 \date{}
-\author{Rares Sahleanu}
 
 \begin{document}
 
-\maketitle
+% Titelseite 1:1 wie in main; Logos kommen aus dem Header-Stil via \thispagestyle{firstpage}
+\begin{titlepage}
+  \thispagestyle{firstpage}
+  \vspace*{4cm}
+  \begin{center}
+    {\Large\bfseries Netzwerke und Schaltungen II, D-ITET\par}
+    \vspace{3mm}
+    {\Huge\bfseries Bodeplots — Aufgaben\par}
+    \vspace{9mm}
+  \end{center}
+  \vfill
+\end{titlepage}
+
+% kein \maketitle
 
 \noindent
-Zeichnen Sie jeweils den Bode-Plot der folgenden Übertragungsfunktionen \( H(s) \).\\[1em]
+Zeichnen Sie jeweils den Bodeplots für Phasen- und Magnitudenverläufe der folgenden Übertragungsfunktionen \( H(s) \).\\[1em]
 
-\newcommand{\aufgabe}[2]{
-  \parbox[t]{0.48\textwidth}{
-    \textbf{(#1)} \quad \Large\( #2 \)
-  }
+\newcommand{\aufgabe}[2]{%
+  \parbox[t]{0.48\textwidth}{\textbf{(#1)} \quad \Large\( #2 \)}%
 }
 
-% --- Aufgaben (a) bis (p): Einfach bis mittel ---
+% --- Aufgabenliste (dein Inhalt unverändert) ---
 
 \aufgabe{a}{H(s) = \frac{1}{s + 1}}
 \hfill
@@ -41,13 +86,13 @@ Zeichnen Sie jeweils den Bode-Plot der folgenden Übertragungsfunktionen \( H(s)
 
 \vspace{1.5em}
 
-\aufgabe{g}{H(s) = \frac{\sqrt{2}100s}{s + 1}}
+\aufgabe{g}{H(s) = \frac{100s}{s + 1}}
 \hfill
-\aufgabe{h}{H(s) = \frac{\sqrt{2} 10s^2}{s - 1}}
+\aufgabe{h}{H(s) = \frac{10\sqrt{2}\, s^2}{s - 1}}
 
 \vspace{1.5em}
 
-\aufgabe{i}{H(s) = \frac{(s + 1)}{(s + 10)^2}}
+\aufgabe{i}{H(s) = \frac{s + 1}{(s + 10)^2}}
 \hfill
 \aufgabe{j}{H(s) = \frac{s + 1}{s^2 + 2s + 1}}
 
@@ -55,11 +100,11 @@ Zeichnen Sie jeweils den Bode-Plot der folgenden Übertragungsfunktionen \( H(s)
 
 \aufgabe{k}{H(s) = \frac{100(s + 1)}{s^2 + 20s + 100}}
 \hfill
-\aufgabe{l}{H(s) = \frac{s^2 - 100}{(s + 1)}}
+\aufgabe{l}{H(s) = \frac{s^2 - 100}{s + 1}}
 
 \vspace{1.5em}
 
-\aufgabe{m}{H(s) = \frac{\sqrt{202}10s}{(s + 1)(s + 10)}}
+\aufgabe{m}{H(s) = \frac{10\sqrt{202}\, s}{(s + 1)(s + 10)}}
 \hfill
 \aufgabe{n\textbf{$\star$}}{H(s) = \frac{s(0.1-s)(s + 10)}{(s + 1)^2}}
 
@@ -67,12 +112,9 @@ Zeichnen Sie jeweils den Bode-Plot der folgenden Übertragungsfunktionen \( H(s)
 
 \aufgabe{o}{H(s) = \frac{1}{s}}
 \hfill
-\aufgabe{p\textbf{$\star$}}{H(s) = \frac{100}{(s^2 + 1s + 100)}}
-
+\aufgabe{p\textbf{$\star$}}{H(s) = \frac{100}{s^2 + s + 100}}
 
 \vspace{1.5em}
-
-% --- Aufgaben (q) bis (t): schwerer, nicht faktorisiert ---
 
 \aufgabe{q\textbf{$\star$}\textbf{$\star$}}{H(s) = \frac{s^2 + 4}{s(s^2 + 10s + 100)}}
 \hfill
@@ -84,7 +126,7 @@ Zeichnen Sie jeweils den Bode-Plot der folgenden Übertragungsfunktionen \( H(s)
 \hfill
 \aufgabe{t\textbf{$\star$}}{H(s) = \frac{-1000(s + 2)^2}{4(s + 1)^3(s + 10)}}
 
-\hfill
+\vspace{1.5em}
 
 \aufgabe{u}{H(s) = \frac{2s}{s^2 + 2s + 1}}
 

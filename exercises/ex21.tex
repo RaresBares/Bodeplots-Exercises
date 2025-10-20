@@ -62,8 +62,8 @@ H(s)=\frac{2\,s}{s^2+2s+1}=\frac{2\,s}{(s+1)^2}\,.
 \subsection{Erklärung}
 \vspace{5mm}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] Nullstelle im Ursprung und Faktor $2$: für $\omega\ll1$ gilt $|H(\j\omega)|\approx 2\,\omega$ $\Rightarrow$ Startsteigung $+20\,\mathrm{dB/dec}$, Startniveau $20\log_{10}2\approx6.02\,\mathrm{dB}$; Startphase $\approx+90^\circ$.
-\item[Schritt 2] Doppelter Pol bei $\omega=1\,\mathrm{rad/s}$: ab $\omega=1$ zusätzliche Steigungsänderung um $-40\,\mathrm{dB/dec}$; Netto-Slope für $\omega\gg1$ ist $-20\,\mathrm{dB/dec}$ ($|H|\sim 2/\omega$). Exakt am Eckpunkt: $|H(\j1)|=1\Rightarrow 0\,\mathrm{dB}$, also $20\log_{10}2-20\log_{10}2=0$ relativ zur Geraden. Phasenabfall der beiden Pole zusammen $180^\circ$ über $\omega\in[0.1,10]$; Näherung: $45^\circ-90^\circ\log_{10}\omega$.
+\item[Schritt 1] Nullstelle im Ursprung und Faktor $2$: für $\omega\ll1$ gilt $|H(\j\omega)|\approx 2\,\omega$ $\Rightarrow$ Startsteigung $+20\,\mathrm{dB/dec}$, Fixpunkt bei $|H(1j)|_{dB}=20\log_{10}1\approx0\,\mathrm{dB}$; Fixpunkt für Geradennäherung liegt ca. $6\,\mathrm{dB}$ über exakten Fixpunkt $0\,\mathrm{dB}$. Startphase $\approx+90^\circ$.
+\item[Schritt 2] Doppelter Pol bei $\omega=1\,\mathrm{rad/s}$: ab $\omega=1$ zusätzliche Steigungsänderung um $-40\,\mathrm{dB/dec}$; Netto-Slope für $\omega\gg1$ ist $-20\,\mathrm{dB/dec}$ ($|H|\sim 2/\omega$). Phasenabfall der beiden Pole zusammen $180^\circ$ über $\omega\in[0.1,10]$; Näherung: $45^\circ-90^\circ\log_{10}\omega$.
 \item[Schritt 3] Grenzverhalten: $\omega\ll1\Rightarrow |H|_{\mathrm{dB}}\approx 20\log_{10}2+20\log_{10}\omega$, $\angle H\approx+90^\circ$; $\omega\gg1\Rightarrow |H|_{\mathrm{dB}}\approx 20\log_{10}2-20\log_{10}\omega$, $\angle H\to-90^\circ$.
 \end{description}
 

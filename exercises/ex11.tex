@@ -11,6 +11,7 @@ H(s)=\frac{100\,(s+1)}{s^2+20s+100}=\frac{100\,(s+1)}{(s+10)^2}\,.
   xlabel={$\omega$ [rad/s]},
   ylabel={Magnitude [dB]},
   grid=both,
+  ytick distance=20,
   title={Bode-Magnitude}
 ]
 \addplot[
@@ -67,8 +68,8 @@ H(s)=\frac{100\,(s+1)}{s^2+20s+100}=\frac{100\,(s+1)}{(s+10)^2}\,.
 \vspace{5mm}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
 \item[Schritt 1] Faktorisierung: $s^2+20s+100=(s+10)^2\Rightarrow H(s)=100\,\dfrac{s+1}{(s+10)^2}$. DC-Wert $H(0)=1\Rightarrow |H|_{\mathrm{DC}}=0\,\mathrm{dB}$; Anfangssteigung $0\,\mathrm{dB/dec}$, Startphase $\approx0^\circ$.
-\item[Schritt 2] Nullstelle bei $\omega_z=1\,\mathrm{rad/s}$: ab $\omega=1$ steigt die Magnitude mit $+20\,\mathrm{dB/dec}$ (rote Gerade $20\log_{10}\omega$). Exakt bei $\omega=1$: $|H(\j1)|\approx\frac{100\sqrt{2}}{101}\Rightarrow |H|_{\mathrm{dB}}\approx+2.9\,\mathrm{dB}$ über der Geraden. Phasenbeitrag der LHP-Nullstelle: Übergang $0^\circ\to+90^\circ$ über $\omega\in[0.1,10]$ (Geradennäherung: $45^\circ+45\log_{10}\omega$).
-\item[Schritt 3] Doppelpol bei $\omega_p=10\,\mathrm{rad/s}$: ab $\omega=10$ zusätzliche Steigungsänderung um $-40\,\mathrm{dB/dec}$; Netto-Slope für $\omega\gg10$ ist $-20\,\mathrm{dB/dec}$ (asymptotisch $|H|\sim100\,\omega/\omega^2=100/\omega$). Am Eckpunkt $\omega=10$ liegt die exakte Magnitude bei $\approx14.0\,\mathrm{dB}$, d.\,h.\ etwa $-6.02\,\mathrm{dB}$ unter der Mittellinie. Phasenabfall der beiden Pole gesamt $180^\circ$ über $\omega\in[1,100]$; Geradennäherung: zunächst $45^\circ-45\log_{10}\omega$ für $\omega\in[1,10]$ (netto zurück Richtung $0^\circ$), danach $-90\log_{10}(\omega/10)$ für $\omega\in[10,100]$ (netto bis $-90^\circ$).
+\item[Schritt 2] Nullstelle bei $\omega_z=1\,\mathrm{rad/s}$: ab $\omega=1$ steigt die Magnitude mit $+20\,\mathrm{dB/dec}$ (rote Gerade $20\log_{10}\omega$). Exakt bei $\omega=1$: $|H(\j1)|\approx\frac{100\sqrt{2}}{101}\Rightarrow |H|_{\mathrm{dB}}\approx+3\,\mathrm{dB}$ über der Geraden. Phasenbeitrag der LHP-Nullstelle: Übergang $0^\circ\to+90^\circ$ über $\omega\in[0.1,10]$ (Geradennäherung: $45^\circ+45\log_{10}\omega$).
+\item[Schritt 3] Doppelpol bei $\omega_p=10\,\mathrm{rad/s}$: ab $\omega=10$ zusätzliche Steigungsänderung um $-40\,\mathrm{dB/dec}$; Netto-Slope für $\omega\gg10$ ist $-20\,\mathrm{dB/dec}$ (asymptotisch $|H|\sim100\,\omega/\omega^2=100/\omega$). Am Eckpunkt $\omega=10$ liegt die exakte Magnitude bei $\approx14.0\,\mathrm{dB}$, d.\,h.\ etwa $-6\,\mathrm{dB}$ unter der Mittellinie. Phasenabfall der beiden Pole gesamt $180^\circ$ über $\omega\in[1,100]$; Geradennäherung: zunächst $45^\circ-45\log_{10}\omega$ für $\omega\in[1,10]$ (netto zurück Richtung $0^\circ$), danach $-90\log_{10}(\omega/10)$ für $\omega\in[10,100]$ (netto bis $-90^\circ$).
 \end{description}
 
 \vspace{0.5cm}

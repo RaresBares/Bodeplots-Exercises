@@ -11,6 +11,7 @@ H(s)=\frac{s+1}{s^2+2s+1}=\frac{1}{s+1}\,.
   xlabel={$\omega$ [rad/s]},
   ylabel={Magnitude [dB]},
   grid=both,
+  ytick distance=20,
   title={Bode-Magnitude}
 ]
 \addplot[
@@ -60,7 +61,7 @@ H(s)=\frac{s+1}{s^2+2s+1}=\frac{1}{s+1}\,.
 \vspace{5mm}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
 \item[Schritt 1] Kürzung: $s^2+2s+1=(s+1)^2\Rightarrow H(s)=\dfrac{s+1}{(s+1)^2}=\dfrac{1}{s+1}$. DC-Faktor $1$: für $\omega\ll1$ gilt $|H(\j\omega)|\approx1$; Betrag $0\,\mathrm{dB}$ ohne Anfangssteigung, Phase $\approx0^\circ$.
-\item[Schritt 2] Einfacher Pol bei $\omega_p=1\,\mathrm{rad/s}$: ab $\omega=1$ wechselt die Magnituden-Steigung um $-20\,\mathrm{dB/dec}$. Am Eckpunkt beträgt die exakte Dämpfung $-10\log_{10}2\approx-3.01\,\mathrm{dB}$ relativ zur Geraden. Phasenübergang über $\omega\in[0.1,10]$ von $0^\circ$ nach $-90^\circ$; Geradennäherung: $-45^\circ-45\log_{10}\omega$.
+\item[Schritt 2] Einfacher Pol bei $\omega_p=1\,\mathrm{rad/s}$: ab $\omega=1$ wechselt die Magnituden-Steigung um $-20\,\mathrm{dB/dec}$. Am Eckpunkt beträgt die exakte Dämpfung $-10\log_{10}2\approx-3\,\mathrm{dB}$ relativ zur Geraden. Phasenübergang über $\omega\in[0.1,10]$ von $0^\circ$ nach $-90^\circ$; Geradennäherung: $-45^\circ-45\log_{10}\omega$.
 \item[Schritt 3] Grenzverhalten: für $\omega\gg1$ folgt $|H(\j\omega)|_{\mathrm{dB}}\approx-20\log_{10}\omega$; die Phase nähert sich $-90^\circ$. Für $\omega\ll1$ bleibt $|H|\approx1$ und $\angle H\approx0^\circ$.
 \end{description}
 
