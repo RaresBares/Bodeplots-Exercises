@@ -14,16 +14,20 @@ Dieses Projekt enthält eine Sammlung von **Bode-Diagramm-Übungen**, ergänzt d
   - `TransferFunction.m` – Hilfsdatei zur Definition eigener Systeme
 
 - **./images/**  
-  Beinhaltet begleitende Abbildungen:
-  - `matlab1.png`, `matlab2.png` – Screenshots des MATLAB-Simulators  
-  - `solutions1.png` – Beispielhafte Lösung  
-  - `tasks1.png` – Beispielhafte Aufgabenstellung
+  Beinhaltet begleitende Abbildungen:  
+  **MATLAB-Ansichten:**  
+  ![MATLAB Ansicht 1](./images/matlab1.png)  
+  ![MATLAB Ansicht 2](./images/matlab2.png)  
+
+  **Aufgaben und Lösungen:**  
+  ![Aufgabe 1](./images/tasks1.png)  
+  ![Lösung 1](./images/solutions1.png)
 
 - **./output/**  
   Enthält exportierte PDFs:
-  - `tasks.pdf` – Aufgabenblatt  
-  - `empty.pdf` – leere Vorlage für eigene Aufgaben  
-  - `solutions.pdf` – Musterlösungen
+  - [`tasks.pdf`](./output/tasks.pdf) – Aufgabenblatt  
+  - [`empty.pdf`](./output/empty.pdf) – leere Vorlage für eigene Aufgaben  
+  - [`solutions.pdf`](./output/solutions.pdf) – Musterlösungen
 
 - **./tex/** und **./templates/**  
   LaTeX-Dateien und Vorlagen zur Erstellung der Übungsunterlagen.
@@ -60,16 +64,20 @@ This project provides a collection of **Bode plot exercises**, accompanied by an
   - `TransferFunction.m` – Helper file for defining custom systems
 
 - **./images/**  
-  Includes related images:
-  - `matlab1.png`, `matlab2.png` – Screenshots of the MATLAB simulator  
-  - `solutions1.png` – Example solution  
-  - `tasks1.png` – Example task
+  Includes related images:  
+  **MATLAB Views:**  
+  ![MATLAB View 1](./images/matlab1.png)  
+  ![MATLAB View 2](./images/matlab2.png)  
+
+  **Tasks and Solutions:**  
+  ![Task 1](./images/tasks1.png)  
+  ![Solution 1](./images/solutions1.png)
 
 - **./output/**  
   Contains exported PDFs:
-  - `tasks.pdf` – Exercise sheet  
-  - `empty.pdf` – Blank template for custom exercises  
-  - `solutions.pdf` – Example solutions
+  - [`tasks.pdf`](./output/tasks.pdf) – Exercise sheet  
+  - [`empty.pdf`](./output/empty.pdf) – Blank template for custom exercises  
+  - [`solutions.pdf`](./output/solutions.pdf) – Example solutions
 
 - **./tex/** and **./templates/**  
   LaTeX files and templates for generating the exercise material.
