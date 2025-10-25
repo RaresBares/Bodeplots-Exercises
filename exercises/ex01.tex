@@ -56,25 +56,105 @@ H(s)=\frac{1}{s+1}\,.
 \end{semilogxaxis}
 \end{tikzpicture}
 \end{center}
-\newpage
-\subsection{Erklärung}
-\vspace{5mm}
+
+\subsection{Erklärung (ausführlich)}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] DC-Faktor $= 1$: für $\omega\ll1$ ist $|H(\j\omega)|\approx1$; Betrag liegt bei $0\,\mathrm{dB}$ ohne Anfangssteigung, Phase $\approx0^\circ$.
-\item[Schritt 2] Einfacher Pol bei $\omega_p=1\,\mathrm{rad/s}$: ab $\omega=1$ ändert die Magnituden-Steigung um $-20\,\mathrm{dB/dec}$; bei $\omega=1$ liegt die exakte Dämpfung bei $-10\log_{10}2\approx-3.01\,\mathrm{dB}$.
-\item[Schritt 3] Grenzverhalten: für $\omega\gg1$ folgt $|H(\j\omega)|_{\mathrm{dB}}\approx-20\log_{10}\omega$; die Phase fällt in der Übergangsdekade $\omega_l=0.1\,\mathrm{rad/s}$ bis $\omega_h=10\,\mathrm{rad/s}$ von $0^\circ$ auf $-90^\circ$ (lineare Näherung: $-45^\circ-45\log_{10}\omega$ bei $\omega\in[0.1,10]$), mit $\angle H(\j\omega)= -45^\circ$ bei $\omega=1$.
+
+\item[1. Zuerst Normalform herstellen.]
+Bringe die Übertragungsfunktion exakt in die im Skript definierte Standardform für reelle Pol-/Nullstellen. Schreibe
+\[
+H(s)=\frac{1}{1+sT_p}\quad\text{mit}\quad T_p=1.
+\]
+Hier haben wir: \[
+\underline{F}_1(s)=\frac{1}{1+sT_p}\quad\text{und}\quad K_0 = 1\quad \text{und}\quad r = 1.
+\]
+Klassifiziere einzigen Teilglieds $\underline{F}_1$: reelles Polglied erster Ordnung.
+
+\item[2. Danach Eckfrequenz bestimmen und sortieren.]
+Bestimme die Eckfrequenz aus der Zeitkonstante:
+\[
+\omega_p=\frac{1}{T_p}=1\,\mathrm{rad/s}.
+\]
+Es existiert nur diese Eckfrequenz; die aufsteigende Sortierung \(\omega_1<\omega_2<\dots\) ist damit trivial. 
+
+\item[3. Jetzt Startpunkt des Amplitudengangs festlegen (Geradennäherung).]
+Setze die Startfrequenz gleich der kleinsten Eckfrequenz \(\omega_{\min}=\omega_p = 1\,\mathrm{rad/s}\). Verwende die Skript-Regel
+\[
+F_{\mathrm{dB}}(\omega_{\min})=20\log_{10}\!\Big(|K_0\,F^*_{ges}(0)|\cdot\,\omega_{\min}^{\,r}\Big) = 20 \log_{10}(1) = 0\,\mathrm{dB}
+\]
+Hier gilt \(K_0=1\), \(r=0\) und \(F^*_{ges}(0)=1\Rightarrow F_{\mathrm{dB}}(\omega_{\min})=0\,\mathrm{dB}\). Dieser Punkt nützt uns als Anker für die Geradennäherung. 
+
+\item[4. Als Nächstes den Verlauf links vom Startpunkt zeichnen.]
+Für \(\omega<\omega_{\min}\) bleibt die Amplituden-Asymptote waagrecht, denn die Anfangssteigung beträgt \(r\cdot 20\,\mathrm{dB/dec}=0\). Trage also eine horizontale Linie bei \(0\,\mathrm{dB}\) ein. 
+
+\item[5. Dann den Steigungswechsel an der Eckfrequenz eintragen.]
+Ein einfaches Polglied \(1/(1+sT_p)\) reduziert die Steigung ab \(\omega_p\) um \(20\,\mathrm{dB/dec}\). Da bist jetzt die Steigung \(0\,\mathrm{dB/dec}\) betrug, ist diese ab jetzt \(-20\,\mathrm{dB/dec}\). Zeichne rechts von \(\omega_p\) die Gerade mit Steigung \(-20\,\mathrm{dB/dec}\). Die Formel für die Geradennäherung lautet:
+\[
+|H(j\omega)|_{\mathrm{dB}}\approx -20\log_{10}\omega\quad(\omega\ge 1).
+\]
+Mehrfachpole würden die Änderung mehrfach zählen; hier nicht nötig. 
+
+\item[6. Jetzt die Eckabrundung korrekt berücksichtigen.]
+Bei einfachen reellen Polen ergibt sich am Knickpunkt \(\omega=\omega_p\) eine Abweichung von \(-3\,\mathrm{dB}\) gegenüber der Gerade. Setze dort einen Stützpunkt:
+\[
+|H(j\omega_p)|_{\mathrm{dB}}=-10\log_{10}(1+1^2)=-10\log_{10}2\approx -3.01\,\mathrm{dB}.
+\]
+Runde die Ecke entsprechend ab. Hätten wir einen Mehrfachpol bei \(\omega_p\) (Beispielsweise \(\big(\frac{1}{1+sT_p}\big)^t\)), müsste man die Ecke um \(t \cdot 3.01\, \mathrm{dB}\) abrunden.  
+
+\item[7. Phasenstartwert festlegen.]
+Nutze die Regel für \(\omega\to 0\): Da \(K_0F_{ges}(0)>0\) und \(r=0\), ist der Startwert der Phase
+\[
+\varphi(0)=0^\circ.
+\]
+
+
+\item[8. Phasenänderung durch das Polglied eintragen.]
+Ein reelles Polglied erster Ordnung erzeugt insgesamt eine Phasenänderung von \(-90^\circ\). Trage die Näherung ein:
+\[
+\varphi(\omega)\approx
+\begin{cases}
+0^\circ,& \omega\le 0.1\,\omega_p,\\
+\text{linear mit Steigung }-45^\circ/\text{Dec},& 0.1\,\omega_p<\omega<10\,\omega_p,\\
+-90^\circ,& \omega\ge 10\,\omega_p.
+\end{cases}
+\]
+Das lineare Zwischenstück kann Formelkonform als \(\varphi(\omega)\approx -45^\circ-45^\circ\log_{10}\omega\) dargestellt werden (hier mit \(\omega_p=1\)). 
+
+\item[9. Exakte Stützstellen eintragen (Kontrolle).]
+Verwende die exakten Ausdrücke
+\[
+|H(j\omega)|=\frac{1}{\sqrt{1+\omega^2}},\qquad \varphi(\omega)=-\arctan(\omega)\ \,[^\circ].
+\]
+Praktische Kontrollpunkte:
+\[
+\begin{aligned}
+&\omega=0.1:\quad |H|_{\mathrm{dB}}\approx -0.043,\ \ \varphi\approx -5.71^\circ,\\
+&\omega=1:\quad |H|_{\mathrm{dB}}\approx -3.01,\ \ \varphi=-45^\circ,\\
+&\omega=10:\quad |H|_{\mathrm{dB}}\approx -20.04,\ \ \varphi\approx -84.29^\circ.
+\end{aligned}
+\]
+Diese Punkte sichern die Asymptotenzeichnung ab. 
+
+\item[10. Grenzwerte und Konsistenz prüfen.]
+DC: \(|H(0)|=1\Rightarrow 0\,\mathrm{dB}\), \(\varphi(0)=0^\circ\). HF: \(|H(j\omega)|\sim 1/\omega\Rightarrow -20\log_{10}\omega\,\mathrm{dB}\)). Pol-/Nullzählung bestätigt die Endphase: Zählergrad \(m=0\), Nennergra \(n=1\Rightarrow \varphi(\infty)=(m-n)\cdot 90^\circ=-90^\circ\). 
+
 \end{description}
 
-\vspace{0.5cm}
-\medskip
-\noindent\textbf{Stückweise Näherung}
+\subsubsection*{Stückweise Näherungen (für die Skizze)}
 \[
-|H(\j\omega)|_{\mathrm{dB}}\approx
+|H(j\omega)|_{\mathrm{dB}}\approx
 \begin{cases}
-0,& \omega\ll1,\\[4pt]
--10\log_{10}2,& \omega=1,\\[4pt]
--20\log_{10}\omega,& \omega\gg1,
+0,& \omega\ll 1,\\[2pt]
+-10\log_{10}2,& \omega=1,\\[2pt]
+-20\log_{10}\omega,& \omega\gg 1,
 \end{cases}
 \qquad
+\varphi(\omega)\approx
+\begin{cases}
+0^\circ,& \omega\le 0.1,\\[2pt]
+-45^\circ-45^\circ\log_{10}\omega,& 0.1<\omega<10,\\[2pt]
+-90^\circ,& \omega\ge 10.
+\end{cases}
 \]
-\newpage
+
+\newpage 

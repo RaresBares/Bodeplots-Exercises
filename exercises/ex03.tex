@@ -64,24 +64,97 @@ H(s)=\frac{s+1}{s+10}\,.
 \end{tikzpicture}
 \end{center}
 \newpage
-\subsection{Erklärung}
-\vspace{5mm}
+\subsection{Erklärung (ausführlich)}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] DC-Faktor $\tfrac{1}{10}$: $H(s)=\tfrac{s+1}{s+10}=\tfrac{1+s}{10(1+s/10)}$. Für $\omega\ll1$ dominiert der DC-Anteil: $|H(\j\omega)|\approx\tfrac{1}{10}$, daher Betrag $-20\,\mathrm{dB}$ ohne Startsteigung; Startphase $\approx0^\circ$.
-\item[Schritt 2] Nullstelle bei $\omega_z=1\,\mathrm{rad/s}$: ab $\omega=1$ steigt die Magnitude mit $+20\,\mathrm{dB/dec}$; zwischen $\omega_l=0.1$ und $\omega_h=10$ wächst die Phasenbeitrag der Nullstelle näherungsweise linear von $0^\circ$ auf $+90^\circ$ (Geradennäherung: $+45^\circ+45\log_{10}\omega$ in $[0.1,10]$), sodass bei $\omega=1$ etwa $+45^\circ$ erreicht werden.
-\item[Schritt 3] Pol bei $\omega_p=10\,\mathrm{rad/s}$: ab $\omega=10$ kommt ein Steigungswechsel von $-20\,\mathrm{dB/dec}$ hinzu; dadurch wird die Gesamtslope wieder $0\,\mathrm{dB/dec}$ und der Betrag konvergiert gegen $0\,\mathrm{dB}$ für $\omega\gg10$. Der Pol führt in $[1,100]$ zu einer Phasenabnahme um $90^\circ$ (Geradennäherung: $+45^\circ-45\log_{10}(\omega/10)$), sodass die Gesamtphase für $\omega\gg100$ wieder gegen $0^\circ$ fällt. Das Zwischenband $1\le\omega\le10$ ist somit nahezu phasenflach bei $\approx+45^\circ$ und weist eine Betrags-Slope von $+20\,\mathrm{dB/dec}$ auf.
+
+\item[1. Zuerst Normalform herstellen.]
+\[
+H(s)=\frac{s+1}{s+10}=\frac{1+sT_z}{10\,(1+sT_p)}
+\]
+Die Teilglieder und Variablen gemäß Skript sind: 
+\[
+\underline{F}_1(s)=\frac{1}{1+s\frac{1}{10}},\; \underline{F}_2(s)=1+s,\quad T_z=1,\;T_p=\tfrac{1}{10},\;K_0=\tfrac{1}{10}\;\text{und}\;r=0.
+\]
+
+reelle Nullstelle erster Ordnung bei $\omega_z=1/T_z=1 \,\mathrm{rad/s}$; reeller Pol erster Ordnung bei $\omega_p=1/T_p=10\,\mathrm{rad/s}$.
+
+\item[2. Danach Eckfrequenzen bestimmen und sortieren.]
+\[
+\omega_z=1\,\mathrm{rad/s},\qquad \omega_p=10\,\mathrm{rad/s},\qquad \omega_z<\omega_p.
+\]
+
+\item[3. Startpunkt des Amplitudengangs (Geradennäherung).]
+Setze $\omega_{\min}=\omega_z=1$.
+\[
+F_{\mathrm{dB}}(\omega_{\min})=20\log_{10}\!\big(|K_0\,F^*_{ges}(0)|\,\omega_{\min}^{\,r}\big)
+=20\log_{10}\!\big(\tfrac{1}{10}\big)=-20\,\mathrm{dB}.
+\]
+Anfangssteigung $r\cdot 20\,\mathrm{dB/dec}=0$.
+
+\item[4. Verlauf links vom Startpunkt.]
+Für $\omega<1$ bleibt die Magnitude-Asymptote horizontal bei $-20\,\mathrm{dB}$, da $r=0$.
+
+\item[5. Steigungswechsel an den Ecken.]
+Die Nullstelle bei $\omega_z=1$ erhöht die Steigung um $+20\,\mathrm{dB/dec}$.
+Der Pol bei $\omega_p=10$ senkt sie wieder um $-20\,\mathrm{dB/dec}$.
+Damit:
+\[
+\begin{cases}
+\omega<1:\ \ 0\,\mathrm{dB/dec},\\
+1\le\omega<10:\ \ +20\,\mathrm{dB/dec},\\
+\omega\ge10:\ \ 0\,\mathrm{dB/dec}.
+\end{cases}
+\]
+
+\item[6. Eckabrundung (exakte Stützpunkte).]
+\[
+|H(j\omega)|=\frac{\sqrt{1+\omega^2}}{\sqrt{100+\omega^2}},\qquad
+|H(j\cdot 1)|_{\mathrm{dB}}=10\log_{10}\!\Big(\frac{2}{101}\Big)\approx -17.03\,\mathrm{dB},
+\]
+\[
+|H(j\cdot 10)|_{\mathrm{dB}}=10\log_{10}\!\Big(\frac{101}{200}\Big)\approx -2.97\,\mathrm{dB}.
+\]
+Bei $\omega=1$ liegt die Kurve $\approx 3\,\mathrm{dB}$ über der Geradennäherung, bei $\omega=10$ $\approx 3\,\mathrm{dB}$ darunter. Auch hier gilt: Mehrfachpole/-nullstellen sorgen für eine Rundung um $t\cdot3\,\mathrm{dB}$
+
+\item[7. Phasenstartwert.]
+Da $K_0F_{ges}(0) >0$ gilt:
+\[
+\varphi(0)=r\cdot 90^\circ = 0^\circ.
+\]
+
+\item[8. Phasenänderung durch Nullstelle und Pol.]
+Reelle Nullstelle 1.\,Ordnung: $0^\circ\to +90^\circ$ über $[0.1,10]$.
+Reeller Pol 1.\,Ordnung: $0^\circ\to -90^\circ$ über $[1,100]$. Die Phasensteigungs und -senkungseffekte überschneiden sich in $[10,100]$ und addieren sich dort. In diesem Interval bleibt also die Phase gleich
+Die Geradennäherung lautet also:
+\[
+\varphi(\omega)\approx
+\begin{cases}
+0^\circ,& \omega\le 0.1,\\
++45^\circ+45^\circ\log_{10}\omega,& 0.1<\omega<1,\\
++45^\circ,& 1\le\omega\le 10,\\
++45^\circ-45^\circ\log_{10}(\omega/10),& 10<\omega<100,\\
+0^\circ,& \omega\ge 100.
+\end{cases}
+\]
+
+\item[9. Exakte Stützstellen (Kontrolle).]
+\[
+\varphi(\omega)=\arctan(\omega)-\arctan\!\Big(\frac{\omega}{10}\Big)\,[^\circ].
+\]
+Praktische Punkte:
+\[
+\begin{aligned}
+\omega=0.1:&\quad |H|_{\mathrm{dB}}\approx -19.96,\ \ \varphi\approx +5.14^\circ,\\
+\omega=1:&\quad |H|_{\mathrm{dB}}\approx -17.03,\ \ \varphi\approx +39.29^\circ,\\
+\omega=10:&\quad |H|_{\mathrm{dB}}\approx -2.97,\ \ \varphi\approx +39.29^\circ,\\
+\omega=100:&\quad |H|_{\mathrm{dB}}\approx -0.04,\ \ \varphi\approx +5.14^\circ.
+\end{aligned}
+\]
+
+\item[10. Grenzwerte und Konsistenz.]
+DC: $|H(0)|=\tfrac{1}{10}\Rightarrow -20\,\mathrm{dB}$, $\varphi(0)=0^\circ$.
+Für $\omega \to \infty$: $|H(j\omega)|\to 1\Rightarrow 0\,\mathrm{dB}$.
+Pol-/Nullzählung: $m=n=1\Rightarrow \varphi(\infty)=(m-n)\cdot90^\circ=0^\circ$.
 \end{description}
 
-\vspace{0.5cm}
-\medskip
-\noindent\textbf{Stückweise Näherung}
-\[
-|H(\j\omega)|_{\mathrm{dB}}\approx
-\begin{cases}
--20,& \omega\ll1,\\[4pt]
--20+20\log_{10}\omega,& 1\ll\omega\ll10,\\[4pt]
-0,& \omega\gg10,
-\end{cases}
-\qquad
-\]
 \newpage

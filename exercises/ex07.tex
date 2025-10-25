@@ -56,24 +56,93 @@ H(s)=\frac{100\,s}{s+1}\,.
 \end{tikzpicture}
 \end{center}
 \newpage
-\subsection{Erklärung}
-\vspace{5mm}
+\subsection{Erklärung (ausführlich)}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] DC-Faktor $100$: Betrag global um $+40\,\mathrm{dB}$ verschoben; die konstante (reell-positive) Verstärkung ändert die Steigung nicht und fügt keine zusätzliche Phase hinzu. Referenzniveau der Geradennäherung damit bei $40\,\mathrm{dB}$.
-\item[Schritt 2] Nullstelle im Ursprung: Startsteigung $+20\,\mathrm{dB/dec}$ für $\omega\ll1$, da $|H(\j\omega)|\sim100\,\omega$; Startphase $\approx+90^\circ$ (idealer Integrator). In der Magnituden-Näherung ergibt sich links der Ecke die Gerade $40+20\log_{10}\omega$.
-\item[Schritt 3] Pol bei $\omega_p=1\,\mathrm{rad/s}$: ab $\omega=1$ Steigungswechsel um $-20\,\mathrm{dB/dec}$; resultierend flacht die Magnitude auf $0\,\mathrm{dB/dec}$ ab und nähert sich für $\omega\gg1$ dem konstanten Niveau $\approx40\,\mathrm{dB}$. Exakter Eckpunkt: $40-10\log_{10}2\approx37\,\mathrm{dB}$. Die Phase fällt über die Übergangsdekade $\omega_l=0.1$ bis $\omega_h=10\,\mathrm{rad/s}$ von $\approx+90^\circ$ gegen $0^\circ$ (Geradennäherung: $45^\circ-45^\circ\log_{10}\omega$ in $[0.1,10]$).
+
+\item[1. Zuerst Normalform herstellen.]
+\[
+H(s)=\frac{100s}{s+1}=100\cdot s\cdot \frac{1}{\,(1+sT_p)}
+\]
+Die Teilglieder und Variablen gemäß Skript sind: 
+\[
+\underline{F}_1(s)=\frac{1}{1+s},\;T_p=1,\;K_0=100\;\text{und}\;r=0.
+\]
+
+
+\item[2. Danach Eckfrequenz bestimmen und sortieren.]
+\[
+\omega_p=\frac{1}{T_p}=1\,\mathrm{rad/s}.
+\]
+Diese ist die einzige Eckfrequenz, daher ist eine Sortierung der Eckfrequenzen hier hinfällig.
+
+\item[3. Startpunkt des Amplitudengangs festlegen (Geradennäherung).]
+Setze $\omega_{\min}=\omega_p=1$.
+\[
+F_{\mathrm{dB}}(\omega_{\min})=20\log_{10}\!\big(|K_0\,F^*_{ges}(0)|\,\omega_{\min}^{\,r}\big)
+=20\log_{10}(100\cdot 1\cdot 1)=40\,\mathrm{dB}.
+\]
+Anfangssteigung $r\cdot 20\,\mathrm{dB/dec}=+20\,\mathrm{dB/dec}$.
+
+\item[4. Verlauf links vom Startpunkt.]
+Für $\omega<\omega_{\min}=1$ gilt die Geradennäherung mit Steigung $+20\,\mathrm{dB/dec}$. Einzeichnen als Gerade mit Steigung $+20\,\mathrm{dB/dec}$ durch den Punkt $(\omega_{\min},\,40\,\mathrm{dB})$.
+
+
+\item[5. Steigungswechsel an der Eckfrequenz eintragen.]
+$\underline{F}_2$ reduziert ab $\omega_p$ die Steigung um $20\,\mathrm{dB/dec}$:
+\[
+\omega<1:\ +20\,\mathrm{dB/dec},\qquad \omega\ge 1:\ 0\,\mathrm{dB/dec}.
+\]
+
+\item[6. Eckabrundung korrekt berücksichtigen.]
+\[
+|H(j\omega)|=\frac{100\,\omega}{\sqrt{1+\omega^2}},\qquad
+|H(j\cdot 1)|_{\mathrm{dB}}=40-10\log_{10}2\approx 36.99\,\mathrm{dB}.
+\]
+Bei $\omega=1$ liegt die Kurve etwa $3.01\,\mathrm{dB}$ unter der rechten Asymptote.
+\newpage
+\item[7. Phasenstartwert festlegen.]
+Da $K_0F_{\mathrm{ges}}(0)>0$ und $r=1$ gilt
+\[
+\varphi(0)=\arg\!\big(K_0F_{\mathrm{ges}}(0)\big)+r\cdot90^\circ
+=0^\circ+1\cdot90^\circ=+90^\circ.
+\]
+
+
+\item[8. Phasenänderung durch die Teilglieder eintragen.]
+für $\omega \ll 0.1$: konstante $+90^\circ$.
+Wegen $\underline{F}_1$ (Pol 1. Ordnung) sinkt die Phase von $90^\circ\to 0^\circ$ über $[0.1,10]$ ab.
+Geradennäherung gesamt:
+\[
+\varphi(\omega)\approx
+\begin{cases}
++90^\circ,& \omega\le 0.1,\\
+45^\circ-45^\circ\log_{10}\omega,& 0.1<\omega<10,\\
+0^\circ,& \omega\ge 10.
+\end{cases}
+\]
+
+\item[9. Grenzwerte und Konsistenz prüfen.]
+DC: $|H(0)|=0\mathrel{\widehat{=}} -\infty\, \mathrm{dB},\ \varphi(0)=90^\circ$.
+HF: $|H(j\omega)|\to 100\Rightarrow 40\,\mathrm{dB}$.
+
+Pol-/Nullzählung: Zählergrad $m=1$, Nennergrad $n=1\Rightarrow \varphi(\infty)=(m-n)\cdot90^\circ=0^\circ$.
 \end{description}
 
-\vspace{0.5cm}
-\medskip
-\noindent\textbf{Stückweise Näherung}
+\subsubsection*{Stückweise Näherungen (für die Skizze)}
 \[
-|H(\j\omega)|_{\mathrm{dB}}\approx
+|H(j\omega)|_{\mathrm{dB}}\approx
 \begin{cases}
-40+20\log_{10}\omega,& \omega\ll1,\\[4pt]
-40-10\log_{10}2,& \omega=1,\\[4pt]
-40,& \omega\gg1,
+40+20\log_{10}\omega,& \omega\ll 1,\\[2pt]
+40-10\log_{10}2,& \omega=1,\\[2pt]
+40,& \omega\gg 1,
 \end{cases}
 \qquad
+\varphi(\omega)\approx
+\begin{cases}
++90^\circ,& \omega\le 0.1,\\[2pt]
+45^\circ-45^\circ\log_{10}\omega,& 0.1<\omega<10,\\[2pt]
+0^\circ,& \omega\ge 10.
+\end{cases}
 \]
+
 \newpage
