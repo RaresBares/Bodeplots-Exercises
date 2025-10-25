@@ -1,3 +1,5 @@
+% Hinweis: Dieses Programm erfordert die "Control System Toolbox". Ohne diese Toolbox läuft es nicht.
+
 classdef BodeApp < handle
     properties
         F
