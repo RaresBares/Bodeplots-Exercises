@@ -27,6 +27,10 @@ classdef BodeApp < handle
     end
     methods
         function obj = BodeApp
+            v = ver('control');
+            if isempty(v) || ~license('test','Control_Toolbox')
+                error('Control System Toolbox not installed or not licensed.')
+            end
             obj.TFList = TransferFunction.makeTransferFunctions();
             obj.F = uifigure('Name','Bode GUI','Position',[100 100 1420 800]);
             obj.Grid = uigridlayout(obj.F,[1 2]); 
