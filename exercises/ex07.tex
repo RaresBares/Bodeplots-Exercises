@@ -59,36 +59,38 @@ H(s)=\frac{100\,s}{s+1}\,.
 \subsection{Erklärung (ausführlich)}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
 
-\item[1. Zuerst Normalform herstellen.]
+\item[1. Normalform herstellen.]
+Bringe die Übertragungsfunktion exakt in die im Skript definierte Standardform für reelle Pol-/Nullstellen.
 \[
 H(s)=\frac{100s}{s+1}=100\cdot s\cdot \frac{1}{\,(1+sT_p)}
 \]
 Die Teilglieder und Variablen gemäß Skript sind: 
 \[
-\underline{F}_1(s)=\frac{1}{1+s},\;T_p=1,\;K_0=100\;\text{und}\;r=0.
+\underline{F}_1(s)=\frac{1}{1+sT_p},\;T_p=1,\;K_0=100\;\text{und}\;r=1.
 \]
 
 
-\item[2. Danach Eckfrequenz bestimmen und sortieren.]
+\item[2. Eckfrequenz bestimmen und sortieren.]
+Unsere einzige Eckfrequenz ist:
 \[
 \omega_p=\frac{1}{T_p}=1\,\mathrm{rad/s}.
 \]
-Diese ist die einzige Eckfrequenz, daher ist eine Sortierung der Eckfrequenzen hier hinfällig.
+Da diese die einzige Eckfrequenz ist, ist eine Sortierung der Eckfrequenzen hier hinfällig.
 
 \item[3. Startpunkt des Amplitudengangs festlegen (Geradennäherung).]
-Setze $\omega_{\min}=\omega_p=1$.
+Setze $\omega_{\min}=\omega_p=1$. Gemäß Skript:
 \[
 F_{\mathrm{dB}}(\omega_{\min})=20\log_{10}\!\big(|K_0\,F^*_{ges}(0)|\,\omega_{\min}^{\,r}\big)
 =20\log_{10}(100\cdot 1\cdot 1)=40\,\mathrm{dB}.
 \]
-Anfangssteigung $r\cdot 20\,\mathrm{dB/dec}=+20\,\mathrm{dB/dec}$.
+Anfangssteigung $r\cdot 20\,\mathrm{dB/dec}=+20\,\mathrm{dB/dec}$, da $r = 1$.
 
-\item[4. Verlauf links vom Startpunkt.]
+\item[4. Verlauf links vom Startpunkt zeichnen.]
 Für $\omega<\omega_{\min}=1$ gilt die Geradennäherung mit Steigung $+20\,\mathrm{dB/dec}$. Einzeichnen als Gerade mit Steigung $+20\,\mathrm{dB/dec}$ durch den Punkt $(\omega_{\min},\,40\,\mathrm{dB})$.
 
 
 \item[5. Steigungswechsel an der Eckfrequenz eintragen.]
-$\underline{F}_2$ reduziert ab $\omega_p$ die Steigung um $20\,\mathrm{dB/dec}$:
+$\underline{F}_1$ reduziert ab $\omega_p$ die Steigung um $20\,\mathrm{dB/dec}$:
 \[
 \omega<1:\ +20\,\mathrm{dB/dec},\qquad \omega\ge 1:\ 0\,\mathrm{dB/dec}.
 \]
@@ -110,7 +112,7 @@ Da $K_0F_{\mathrm{ges}}(0)>0$ und $r=1$ gilt
 
 \item[8. Phasenänderung durch die Teilglieder eintragen.]
 für $\omega \ll 0.1$: konstante $+90^\circ$.
-Wegen $\underline{F}_1$ (Pol 1. Ordnung) sinkt die Phase von $90^\circ\to 0^\circ$ über $[0.1,10]$ ab.
+Durch $\underline{F}_1$ (Pol 1. Ordnung) sinkt die Phase von $90^\circ\to 0^\circ$ über $[0.1,10]$ ab.
 Geradennäherung gesamt:
 \[
 \varphi(\omega)\approx
