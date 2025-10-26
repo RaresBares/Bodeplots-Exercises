@@ -55,24 +55,80 @@ H(s)=\frac{4}{s^2-4}=\frac{4}{(s-2)(s+2)}\,.
 \end{tikzpicture}
 \end{center}
 \newpage
-\subsection{Erklärung}
-\vspace{5mm}
+\subsection{Erklärung (ausführlich)}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] Faktorisierung: $H(s)=\dfrac{4}{(s-2)(s+2)}$. DC-Wert $H(0)=-1\Rightarrow |H|_{\mathrm{DC}}=0\,\mathrm{dB}$; das negative Vorzeichen liefert eine konstante Phase von $-180^\circ$. Anfangssteigung $0\,\mathrm{dB/dec}$.
-\item[Schritt 2] Pole bei $\omega_p=2\,\mathrm{rad/s}$ (einer RHP, einer LHP): Magnitudenbeitrag entspricht einem Doppelpol bei $\omega=2$ $\Rightarrow$ ab $\omega=2$ Slope $-40\,\mathrm{dB/dec}$. Am Eckpunkt exakte Dämpfung $-20\log_{10}2\approx-6\,\mathrm{dB}$. Phasenverlauf: die entgegengesetzen Beiträge der LHP- und RHP-Polphase heben sich auf; netto bleibt die Phase für alle $\omega$ konstant $-180^\circ$.
-\item[Schritt 3] Grenzverhalten: für $\omega\ll2$ bleibt $|H(\j\omega)|\approx1$; für $\omega\gg2$ folgt $|H(\j\omega)|_{\mathrm{dB}}\approx-40\log_{10}(\omega/2)$; die Phase bleibt über das gesamte Spektrum bei $-180^\circ$.
+
+\item[1. Normalform herstellen.]
+\[
+H(s)=\frac{4}{(s-2)(s+2)}
+= K_0\cdot\frac{1}{(1-sT_{p1})}\cdot\frac{1}{(1+sT_{p2})}
+\]
+mit
+\[
+K_0=-1,\quad r=0,\quad T_{p1}=\tfrac{1}{2},\quad T_{p2}=\tfrac{1}{2}.
+\]
+
+\item[2. Eckfrequenz bestimmen und sortieren.]
+\[
+\omega_{p1}=\tfrac{1}{T_{p1}}=\omega_{p2}=\tfrac{1}{T_{p2}}=2\,\mathrm{rad/s}
+\]
+
+\item[3. Startpunkt des Amplitudengangs festlegen.]
+Setze \(\omega_{\min}=\omega_p=2\).
+\[
+F_{\mathrm{dB}}(\omega_{\min})=20\log_{10}\!\big(|K_0\,\underline{F}^*_{\mathrm{ges}}(0)|\,\omega_{\min}^{\,r}\big)
+=20\log_{10}(1)=0\,\mathrm{dB}.
+\]
+Ankerpunkt: \(0\,\mathrm{dB}\) bei \(\omega=2\).
+
+\item[4. Verlauf links vom Startpunkt zeichnen.]
+Für \(\omega<2\): Anfangssteigung \(r\cdot 20=0\,\mathrm{dB/dec}\) \(\Rightarrow\) horizontale Asymptote bei \(0\,\mathrm{dB}\).
+
+\item[5. Steigungswechsel an der Eckfrequenz eintragen.]
+Ab \(\omega=2\): zwei einfache Pole (RHP \& LHP) \(\Rightarrow\) zusätzliche \(-40\,\mathrm{dB/dec}\). Netto:
+\[
+\begin{cases}
+0\,\mathrm{dB},& \omega<2,\\
+-40\log_{10}(\omega/2),& \omega\ge 2.
+\end{cases}
+\]
+
+\item[6. Eckabrundung korrekt berücksichtigen.]
+Am Knick \(\omega=2\): Summe zweier \(-3\,\mathrm{dB}\)\ \(\Rightarrow\)\ \(-6\,\mathrm{dB}\) unter der Geraden:
+\[
+|H(j2)|_{\mathrm{dB}}\approx -6\,\mathrm{dB}.
+\]
+(Dies gilt hier trotz RHP/LHP-Mischung, da es um den \emph{Betrag} geht.)
+
+\item[7. Phasenstartwert festlegen.]
+Da \(K_0\,\underline{F}^*_{\mathrm{ges}}(0)<0\) und \(r=0\),
+\[
+\varphi(0)=-180^\circ + r\cdot90^\circ = -180^\circ.
+\]
+
+\item[8. Phasenänderung durch die Polglieder (Überlappung/Kompensation).]
+Ein LHP-Pol trägt \(-90^\circ\) über seine Übergangsdekade \([0.2,20]\) bei, ein RHP-Pol gleicher Lage trägt \(+90^\circ\) über \([0.2,20]\) bei. Diese Beiträge überlappen vollständig und kompensieren sich zu \(0^\circ\); daher bleibt die Phase für alle \(\omega\) konstant bei \(-180^\circ\) (der durch \(K_0<0\) vorgegebene Offset).
+
+\item[9. Grenzwerte und Konsistenz prüfen.]
+DC: \(|H(0)|=1\Rightarrow 0\,\mathrm{dB}\), \(\varphi(0)=-180^\circ\).
+HF: \(|H(j\omega)|=\frac{4}{\omega^2+4}\sim \frac{4}{\omega^2}\Rightarrow -40\log_{10}(\omega/2)\,\mathrm{dB}\), \(\varphi(\infty)=-180^\circ\).
+
 \end{description}
 
-\vspace{0.5cm}
-\medskip
-\noindent\textbf{Stückweise Näherung}
+\subsubsection*{Stückweise Näherungen (für die Skizze)}
 \[
-|H(\j\omega)|_{\mathrm{dB}}\approx
+|H(j\omega)|_{\mathrm{dB}}\approx
 \begin{cases}
-0,& \omega\ll2,\\[4pt]
--20\log_{10}2,& \omega=2,\\[4pt]
--40\log_{10}(\omega/2),& \omega\gg2,
+0,& \omega\ll 2,\\[2pt]
+-6,& \omega=2,\\[2pt]
+-40\log_{10}(\omega/2),& \omega\gg 2,
 \end{cases}
-\qquad
 \]
+\[
+\varphi(\omega)\approx
+\begin{cases}
+-180^\circ,& \text{für alle }\omega.
+\end{cases}
+\]
+
 \newpage

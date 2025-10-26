@@ -64,28 +64,101 @@ H(s)=\frac{-1000}{(s+1)(s+100)}\,.
 \end{tikzpicture}
 \end{center}
 \newpage
-\subsection{Erklärung}
-\vspace{5mm}
+
+\subsection{Erklärung (ausführlich)}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] Konstante und Normierung: 
-\(H(s)=...=-10\,\dfrac{1}{(1+s)(1+s/100)}\).
-DC-Wert \(H(0)=-10\Rightarrow |H|_{\mathrm{DC}}=20\,\mathrm{dB}\). Das negative Vorzeichen bewirkt eine konstante Zusatzphase; hier wird die Phase, aus Darstellungsgründen, um \(+360^\circ\) angehoben, sodass sie von \(180^\circ\) (für \(\omega\ll1\)) nach \(0^\circ\) (für \(\omega\gg100\)) verläuft.
-\item[Schritt 2] Pol bei \(\omega_{p1}=1\,\mathrm{rad/s}\): ab \(\omega=1\) sinkt die Magnitude mit \(-20\,\mathrm{dB/dec}\). Exakt: Zusatzdämpfung \(-10\log_{10}2\approx-3\,\mathrm{dB}\). Phasenanteil (verschoben): Geradennäherung \(135^\circ-45^\circ\log_{10}\omega\) über \([0.1,10]\) zu $90^\circ$.
-\item[Schritt 3] Pol bei \(\omega_{p2}=100\,\mathrm{rad/s}\): ab \(\omega=100\) weitere Steigungsänderung \(-20\,\mathrm{dB/dec}\)\(\Rightarrow\) Gesamtslope \(-40\,\mathrm{dB/dec}\) für \(\omega\gg100\). Phasenanteil (verschoben): \(45^\circ-45^\circ\log_{10}(\omega/100)\) über \([10,10^5]\). Grenzwerte: \(|H(\j\omega)|_{\mathrm{dB}}\sim -40\log_{10}(\omega/100)+20\); \(\angle H(\j\omega)\to 0^\circ\) für \(\omega\to10^5\).
+
+\item[1. Normalform herstellen.]
+\[
+H(s)=\frac{-1000}{(s+1)(s+100)}
+= \frac{K_0}{(1+sT_{p1})(1+sT_{p2})}
+\]
+mit
+\[
+K_0=-10,\quad r=0,\quad T_{p1}=1,\quad T_{p2}=\tfrac{1}{100}.
+\]
+\[
+\underline{F}_1(s)=\frac{1}{1+sT_{p1}}=\frac{1}{1+s},\qquad
+\underline{F}_2(s)=\frac{1}{1+sT_{p2}}=\frac{1}{1+\tfrac{s}{100}}.
+\]
+Konstantes Vorzeichen \(K_0<0\): Phasenoffset \(\pm180^\circ\) (hier Darstellung um \(+360^\circ\) verschoben).
+
+\item[2. Eckfrequenzen bestimmen und sortieren.]Die $\omega$-Eckfrequenzen lassen sich aus den $T_n$'s bestimmen und müssen anschließend sortiert werden:
+\[
+\omega_{p1}=\frac{1}{T_{p1}}=1\,\mathrm{rad/s},\qquad \omega_{p2}=\frac{1}{T_{p2}}=100\,\mathrm{rad/s},\qquad \omega_{p1}<\omega_{p2}.
+\]
+
+\item[3. Startpunkt des Amplitudengangs festlegen (Geradennäherung).]
+\[
+\omega_{\min}=\omega_{p1}=1,\quad
+F_{\mathrm{dB}}(\omega_{\min})=20\log_{10}\!\big(|K_0\underline{F}_{ges}^*(0)|\,\omega_{\min}^{\,r}\big)=20\log_{10}10=20\,\mathrm{dB}.
+\]
+Unser Ankerpunkt ist: \(20\,\mathrm{dB}\) bei \(\omega=1\).
+
+\item[4. Verlauf links vom Startpunkt zeichnen.]
+Für \(\omega<\omega_z\) bleibt die Amplituden-Asymptote bei \(20\,\mathrm{dB}\) konstant (Anfangssteigung \(r\cdot 20 \,\mathrm{dB}=0\)). Zeichne eine waagrechte Gerade links von der kleinsten Eckfrequenz.
+
+\item[5. Steigungswechsel an den Eckfrequenzen eintragen.]
+Ab \(\omega=1\): \(-20\,\mathrm{dB/dec}\) (einfacher Pol).
+Ab \(\omega=100\): zusätzl. \(-20\,\mathrm{dB/dec}\) \(\Rightarrow\) insgesamt \(-40\,\mathrm{dB/dec}\).
+Geradennäherungen:
+\[
+|H(j\omega)|_{\mathrm{dB}}\approx
+\begin{cases}
+20,& \omega\le 1,\\
+20-20\log_{10}\omega,& 1<\omega\le 100,\\
+-20-40\log_{10}(\omega/100),& \omega\ge 100.
+\end{cases}
+\]
+
+\item[6. Eckabrundungen korrekt berücksichtigen.]
+Bei jedem einfachen Pol: \(-3\,\mathrm{dB}\) am Knick.
+\[
+|H(j1)|_{\mathrm{dB}}=20-10\log_{10}2\approx 17\,\mathrm{dB},\qquad
+|H(j100)|_{\mathrm{dB}}=-20-10\log_{10}2\approx -23\,\mathrm{dB}.
+\]
+
+\item[7. Phasenstartwert festlegen.]
+Wegen \(K_0<0\): Startphase \(-180^\circ + r\cdot90^\circ=-180^\circ\). Darstellung um \(+360^\circ\) verschoben \(\Rightarrow\) \(+180^\circ\) für \(\omega\ll 0.1\).
+
+\item[8. Phasenänderung durch die Polglieder eintragen.]
+Jeder einfache Pol: \(-90^\circ\) über je eine Dekade.
+Näherung (verschobene Darstellung):
+\[
+\varphi(\omega)\approx
+\begin{cases}
+180^\circ,& \omega\le 0.1,\\
+135^\circ-45^\circ\log_{10}\omega,& 0.1<\omega<10,\\
+45^\circ-45^\circ\log_{10}(\omega/100),& 10<\omega<1000,\\
+0^\circ,& \omega\ge 1000.
+\end{cases}
+\]
+
+\item[9. Grenzwerte und Konsistenz prüfen.]
+DC: \(|H(0)|=10\Rightarrow 20\,\mathrm{dB}\); Phase \(-180^\circ\) (hier als \(+180^\circ\) gezeigt).
+HF: \(|H(j\omega)|\sim 10/\omega^2\Rightarrow -40\log_{10}(\omega/100)-20\,\mathrm{dB}\). 
+Pol-/Nullzählung bestätigt die Endphase: \(m=0\), \(n=2\Rightarrow (m-n)\cdot 90^\circ=-180^\circ\); plus negatives \(K_0\) \(\Rightarrow\) zusätzlich \(-180^\circ\); gesamte \(-360^\circ\equiv 0^\circ\) (mod \(360^\circ\)).
+
 \end{description}
 
-\vspace{0.5cm}
-\medskip
-\noindent\textbf{Stückweise Näherung}
+\subsubsection*{Stückweise Näherungen (für die Skizze)}
 \[
-|H(\j\omega)|_{\mathrm{dB}}\approx
+|H(j\omega)|_{\mathrm{dB}}\approx
 \begin{cases}
-20,& \omega\ll1,\\[4pt]
-20-10\log_{10}2,& \omega=1,\\[4pt]
-20-20\log_{10}\omega,& 1\ll\omega\ll100,\\[4pt]
--20-10\log_{10}2,& \omega=100,\\[4pt]
--20-40\log_{10}(\omega/100),& \omega\gg100,
+20,& \omega\ll 1,\\[2pt]
+20-10\log_{10}2,& \omega=1,\\[2pt]
+20-20\log_{10}\omega,& 1\ll\omega\ll 100,\\[2pt]
+-20-10\log_{10}2,& \omega=100,\\[2pt]
+-20-40\log_{10}(\omega/100),& \omega\gg 100,
 \end{cases}
-\qquad
+\]\[
+\varphi(\omega)\ (\text{um }+360^\circ)\approx
+\begin{cases}
+180^\circ,& \omega\le 0.1,\\[2pt]
+135^\circ-45^\circ\log_{10}\omega,& 0.1<\omega<10,\\[2pt]
+45^\circ-45^\circ\log_{10}(\omega/100),& 10<\omega<1000,\\[2pt]
+0^\circ,& \omega\ge 1000.
+\end{cases}
 \]
+
 \newpage

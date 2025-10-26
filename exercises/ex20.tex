@@ -79,25 +79,102 @@ H(s)=\frac{-1000\,(s+2)^2}{4\,(s+1)^3\,(s+10)}=-250\,\frac{(s+2)^2}{(s+1)^3\,(s+
 \end{center}
 \newpage
 
-\subsection{Erklärung}
-\vspace{5mm}
+\subsection{Erklärung (ausführlich)}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] Konstante \& Vorzeichen: $H(0)=-100\Rightarrow |H|_{\mathrm{DC}}=40\,\mathrm{dB}$, Anfangssteigung $0\,\mathrm{dB/dec}$. Die Darstellung ist um $+360^\circ$ verschoben: Startphase $180^\circ$ (das negative Vorzeichen).
-\item[Schritt 2] Dreifachpol bei $\omega=1\,\mathrm{rad/s}$: ab $\omega=1$ Steigungsänderung um $-60\,\mathrm{dB/dec}$; Exakte Abweichung ggü. Geradennäherung $-3\cdot10\log_{10}2\approx-9\,\mathrm{dB}$. Phasenabfall dieses Poltripels über $\omega\in[0.1,10]$ um $270^\circ$.
-\item[Schritt 3] Doppelnullstelle bei $\omega=2\,\mathrm{rad/s}$ und Pol bei $\omega=10\,\mathrm{rad/s}$: die Doppelnull hebt die Slope ab $\omega=2$ um $+40\,\mathrm{dB/dec}$ (Netto $-20\,\mathrm{dB/dec}$ in $(2,10)$), der Pol bei $\omega=10$ senkt sie um weitere $-20\,\mathrm{dB/dec}$ (Netto $-40\,\mathrm{dB/dec}$ für $\omega\gg10$). Phasenbeiträge: $+180^\circ$ der Doppelnullstelle über $[0.2,20]$, $-90^\circ$ des Pols bei $10$ über $[1,100]$; Die Phase verläuft von $180^\circ$ ($\omega \ll 0.1$) gegen $0^\circ$ ($100 \ll \omega$).
+
+\item[1. Normalform herstellen.]
+\[
+H(s)=-250\,\frac{(1+sT_{z})^{2}}{(1+sT_{p1})^{3}\,(1+sT_{p2})},
+\quad T_{z}=\tfrac{1}{2},\ T_{p1}=1,\ T_{p2}=\tfrac{1}{10}.
+\]
+Konstanten:
+\[
+K_0=-250,\quad r=0.
+\]
+Einzelteile der Übertragungsfunktion: Doppelnullstelle (LHP) bei \(\omega_z=2\), Dreifachpol (LHP) bei \(\omega_{p1}=1\), einfacher Pol (LHP) bei \(\omega_{p2}=10\).
+
+\item[2. Eckfrequenzen bestimmen und sortieren.]
+\[
+\omega_{p1}=1\ \text{rad/s}<\omega_{z}=2\ \text{rad/s}<\omega_{p2}=10\ \text{rad/s}.
+\]
+
+\item[3. Startpunkt des Amplitudengangs festlegen (Geradennäherung).]
+Setze \(\omega_{\min}=\omega_{p1}=1\).
+\[
+F_{\mathrm{dB}}(\omega_{\min})
+=20\log_{10}\!\big(|K_0\,\underline{F}^*_{\!ges}(0)|\,\omega_{\min}^{\,r}\big)
+=20\log_{10}(250/2.5)=40\,\mathrm{dB}.
+\]
+Ankerpunkt: \(40\,\mathrm{dB}\) bei \(\omega=1\).
+
+\item[4. Verlauf links vom Startpunkt zeichnen.]
+Für \(\omega<1\): Anfangssteigung \(r\cdot20=0\,\mathrm{dB/dec}\) \(\Rightarrow\) horizontale Asymptote bei \(40\,\mathrm{dB}\).
+
+\item[5. Steigungswechsel an den Eckfrequenzen eintragen.]
+Ab \(\omega=1\): \(3 \cdot (-20\,\mathrm{dB/dec})=-60\,\mathrm{dB/dec}\) (Tripelpol).\\
+Ab \(\omega=2\) kommt zusätzlich hinzu: \(2\cdot20\,\mathrm{dB/dec}=+40\,\mathrm{dB/dec}\) (Doppelnull) \(\Rightarrow\) netto \(-20\,\mathrm{dB/dec}\) in \([2,10]\).\\
+Ab \(\omega=10\): \(-20\,\mathrm{dB/dec}\) (Pol) \(\Rightarrow\) netto \(-40\,\mathrm{dB/dec}\) für \(\omega\gg10\).
+Geradennäherung:
+\[
+|H(j\omega)|_{\mathrm{dB}}\approx
+\begin{cases}
+40,& \omega<1,\\
+40-60\log_{10}\omega,& 1\le\omega<2,\\
+40-60\log_{10}2-20\log_{10}(\omega/2),& 2\le\omega<10,\\
+40-60\log_{10}2-20\log_{10}5-40\log_{10}(\omega/10),& \omega\ge 10.
+\end{cases}
+\]
+
+\item[6. Eckabrundungen korrekt berücksichtigen.]
+\(\omega=1\) (Tripelpol): \(-3\cdot 3\,\mathrm{dB}=-9\,\mathrm{dB}\) unter der Geradennäherung.\\
+\(\omega=2\) (Doppelnull): \(+2\cdot 3\,\mathrm{dB}=+6\,\mathrm{dB}\) über der Geradennäherung.\\
+\(\omega=10\) (einfacher Pol): \(-3\,\mathrm{dB}\) unter der Geradennäherung.
+
+\item[7. Phasenstartwert festlegen.]
+Da \(K_0\,\underline{F}^*_{\!ges}(0)<0\) und \(r=0\),
+\[
+\varphi(0)=-180^\circ + r\cdot 90^\circ=-180^\circ
+\]
+(Plot um \(+360^\circ\) verschoben \(\Rightarrow\) Start bei \(+180^\circ\)).
+
+\item[8. Phasenänderung durch Nullstellen und Pole eintragen.]
+Die Phasenlage ergibt sich als Summe der Beiträge aller Glieder und verläuft über die jeweiligen Übergangsdekaden additiv. 
+Zunächst setzt der \emph{Tripelpol} bei $\omega=1$ ein: er liefert insgesamt $-270^\circ$ verteilt über die Dekade $[0.1,10]$, d.\,h.\ in seiner aktiven Zone fällt die Phase mit einer Steigung von $-135^\circ/\mathrm{dec}$ (pro einfachem Pol $-45^\circ/\mathrm{dec}$). 
+Bei $\omega=2$ beginnt zusätzlich die \emph{Doppelnullstelle} zu wirken, die über $[0.2,20]$ in Summe $+180^\circ$ beisteuert, also $+90^\circ/\mathrm{dec}$ in ihrer Übergangszone. 
+Schließlich senkt der \emph{einfache Pol} bei $\omega=10$ die Phase über $[1,100]$ um weitere $-90^\circ$ (Steigung $-90^\circ/\mathrm{dec}$ in seiner aktiven Dekade). 
+
+\textbf{Überlappung/Addierung:} In den überlappenden Bereichen addieren sich die Steigungen: 
+Zwischen $[0.2,1]$ wirken Tripelpol ($-135^\circ/\mathrm{dec}$) und Doppelnull ($+90^\circ/\mathrm{dec}$) gleichzeitig, sodass netto $-45^\circ/\mathrm{dec}$ entsteht. 
+Im Intervall $[2,10]$ überlagern sich Tripelpol ($-270^\circ$ gesamt) und Doppelnull ($+180^\circ$ gesamt); die resultierende Steigung ist dort netto $-90^\circ/\mathrm{dec}$. 
+Sobald ab $\omega=10$ der zusätzliche Pol aktiv wird, bleibt die Null über $[10,20]$ noch wirksam: $+90^\circ/\mathrm{dec}$ (Null) und $-90^\circ/\mathrm{dec}$ (neuer Pol) heben sich auf, sodass netto $+90^\circ/\mathrm{dec}$ in $[10,20]$ resultiert. 
+
+
+\item[9. Grenzwerte und Konsistenz prüfen.]
+DC: \(|H(0)|=|-250\cdot 4/(1^3\cdot 10)|=100\Rightarrow 40\,\mathrm{dB}\); \(\varphi(0)=-180^\circ\) (gezeigt als \(+180^\circ\)).\\
+HF: \(|H(j\omega)|\sim 250\,\frac{\omega^2}{\omega^4}=250/\omega^2\Rightarrow -40\log_{10}(\omega/10)-20\log_{10}5\,\mathrm{dB}\); \(\varphi(\infty)=0^\circ\) (mod \(360^\circ\)).
+
 \end{description}
 
-\vspace{0.5cm}
-\medskip
-\noindent\textbf{Stückweise Näherung}
+\subsubsection*{Stückweise Näherungen (für die Skizze)}
 \[
-|H(\j\omega)|_{\mathrm{dB}}\approx
+|H(j\omega)|_{\mathrm{dB}}\approx
 \begin{cases}
-40,& \omega\ll1,\\[4pt]
-40-60\log_{10}\omega,& 1\ll\omega\ll2,\\[4pt]
-40-60\log_{10}2-20\log_{10}(\omega/2),& 2\ll\omega\ll10,\\[4pt]
-40-60\log_{10}2-20\log_{10}5-40\log_{10}(\omega/10),& \omega\gg10,
+40,& \omega\ll 1,\\[2pt]
+40-60\log_{10}\omega,& 1\ll\omega\ll 2,\\[2pt]
+40-60\log_{10}2-20\log_{10}(\omega/2),& 2\ll\omega\ll 10,\\[2pt]
+40-60\log_{10}2-20\log_{10}5-40\log_{10}(\omega/10),& \omega\gg 10,
 \end{cases}
-\qquad
+\]\[
+\varphi(\omega)\approx
+\begin{cases}
+180^\circ,& \omega\le 0.1,\\[2pt]
+180^\circ-135^\circ\log_{10}(\omega/0.1),& 0.1<\omega<0.2,\\[2pt]
+180^\circ-135^\circ\log_{10}2-45^\circ\log_{10}(\omega/0.2),& 0.2<\omega<1,\\[2pt]
+135^\circ-90^\circ\log_{10}(\omega/2),& 2<\omega<10,\\[2pt]
+135^\circ-90^\circ\log_{10}5+90^\circ\log_{10}(\omega/10),& 10<\omega<20,\\[2pt]
+0^\circ-90^\circ\log_{10}(\omega/20),& 20<\omega<100,\\[2pt]
+0^\circ,& \omega\ge 100.
+\end{cases}
 \]
+
 \newpage

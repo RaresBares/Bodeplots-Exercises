@@ -1,22 +1,26 @@
 \section*{Einleitung: \(s\) und \(j\omega\)}
 
-Für sinusförmige stationäre Signale fällt die Laplace- mit der Fourier-Transfor- mierten auf der imaginären Achse zusammen; eine Abklinghülle ist nicht nötig, daher setzt man \(\sigma=0\) und damit
+\textit{Warum sind manche Übertragungsfunktionen manchmal abhängig von $s$ und manchmal von $\mathrm{j}\omega$?}
+
+\smallskip
+\noindent
+Für sinusförmige stationäre Signale ist die Laplace- mit der Fourier-Transfor- mierten auf der imaginären Achse äquivalent; eine Abklinghülle ist nicht nötig, daher setzt man \(\sigma=0\) und damit
 \[ s = j\omega. \]
-Der Frequenzgang wird zwar als \(H(j\omega)\) ausgewertet, aber die Schreibweise in \(s\) ist kompakter: Standardformen wie \(1+sT\), \(1/(1+sT)\), \(sL\), \(1/(sC)\) sind sofort lesbar und direkt faktorisierbar. Vorgehen: in \(s\) modellieren und faktorisieren, um Magnituden/Phasen explitizit auszurechnen, am Ende \(s\to j\omega\) einsetzen.
+Der Frequenzgang wird zwar als \(H(j\omega)\) ausgewertet, aber die Schreibweise in \(s\) ist kompakter und, wie wir gesehen haben, äquivalent: Standardformen wie \(1+sT\), \(1/(1+sT)\), \(sL\), \(1/(sC)\) sind sofort lesbar und einfacher zu faktorisieren. Es bietet sich an in \(s\) zu modellieren und faktorisieren und um Magnituden/Phasen explitizit auszurechnen, am Ende \(s\to j\omega\) einsetzen und mit den Gesetzen der komplexen Zahlen zu arbeiten.
 
 
 \subsection*{Beispiele}
 
-$$ H(s)=\frac{1}{1+sT}\qquad\Rightarrow\qquad H(j\omega)=\frac{1}{1+j\omega T} $$
+$$ H(s)=\frac{1}{1+sT}\qquad\Leftrightarrow\qquad H(j\omega)=\frac{1}{1+j\omega T} $$
 
-$$ H(s)=\frac{sT}{1+sT}\qquad\Rightarrow\qquad H(j\omega)=\frac{j\omega T}{1+j\omega T} $$
+$$ H(s)=\frac{sT}{1+sT}\qquad\Leftrightarrow\qquad H(j\omega)=\frac{j\omega T}{1+j\omega T} $$
 
-$$ H(s)=\frac{1}{sT}\qquad\Rightarrow\qquad H(j\omega)=\frac{1}{j\omega T} $$
+$$ H(s)=\frac{1}{sT}\qquad\Leftrightarrow\qquad H(j\omega)=\frac{1}{j\omega T} $$
 
-$$ H(s)=sT\qquad\Rightarrow\qquad H(j\omega)=j\omega T $$
+$$ H(s)=sT\qquad\Leftrightarrow\qquad H(j\omega)=j\omega T $$
 
-$$ H(s)=\frac{\omega_0^2}{s^2+2\zeta \omega_0 s+\omega_0^2}\qquad\Rightarrow\qquad H(j\omega)=\frac{\omega_0^2}{-\omega^2+j\,2\zeta \omega_0 \omega+\omega_0^2} $$
+$$ H(s)=\frac{\omega_0^2}{s^2+2\zeta \omega_0 s+\omega_0^2}\qquad\Leftrightarrow\qquad H(j\omega)=\frac{\omega_0^2}{-\omega^2+j\,2\zeta \omega_0 \omega+\omega_0^2} $$
 
-$$ H(s)=\frac{1+sT_{z}}{1+sT_{p}}\qquad\Rightarrow\qquad H(j\omega)=\frac{1+j\omega T_{z}}{1+j\omega T_{p}} $$
+$$ H(s)=\frac{1+sT_{z}}{1+sT_{p}}\qquad\Leftrightarrow\qquad H(j\omega)=\frac{1+j\omega T_{z}}{1+j\omega T_{p}} $$
 
 \newpage

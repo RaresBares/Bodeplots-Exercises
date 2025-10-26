@@ -65,24 +65,113 @@ H(s)=\frac{10\,(1 - s)}{s+10}\,.
 \end{tikzpicture}
 \end{center}
 \newpage
-\subsection{Erklärung}
-\vspace{5mm}
+\subsection{Erklärung (ausführlich)}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] DC-Faktor $1$: $H(0)=1\Rightarrow |H|_{\mathrm{DC}}=0\,\mathrm{dB}$ ohne Anfangssteigung; Phase $\approx0^\circ$.
-\item[Schritt 2] Nullstelle bei $\omega_z=1\,\mathrm{rad/s}$ in der rechten Halbebene $\Rightarrow$ ab $\omega=1$ Anstieg um $+20\,\mathrm{dB/dec}$. Übergang $0^\circ\to-90^\circ$ über $\omega\in[0.1,10]$; Geradennäherung $-45^\circ-45\log_{10}\omega$ liefert $\angle H(1)\approx-45^\circ$. Exakt liegt die Magnitude bei $\omega=1$ bei $20+10\log_{10}2-10\log_{10}101\approx+3\,\mathrm{dB}$.
-\item[Schritt 3] Pol bei $\omega_p=10\,\mathrm{rad/s}$: ab $\omega=10$ Steigungswechsel um $-20\,\mathrm{dB/dec}$; für $\omega\gg10$ ergibt sich konstanter Betrag $\approx+20\,\mathrm{dB}$. Phasenabfall des Pols um weitere $90^\circ$ über $\omega\in[1,100]$; Geradennäherung $-45^\circ-45\log_{10}(\omega/10)$. Zusammengesetzt: Phase $\approx0^\circ$ für $\omega\ll0.1$,       $\approx-45^\circ$ um $\omega\approx1$, $\approx-135^\circ$ um $\omega\approx10$ und $\approx-180^\circ$ für $\omega\gg100$.
+
+\item[1. Normalform herstellen.]
+Bringe die Übertragungsfunktion exakt in die im Skript definierte Standardform.
+\[
+H(s)=\frac{10(1-s)}{s+10}
+= (1 - sT_z)\cdot\frac{1}{1+sT_p}\,.
+\]
+mit \(K_0=1\), \(r=0\), \(T_z=1\), \(T_p=\tfrac{1}{10}\).
+Klassifiziere die Glieder: RHP-Nullstelle \(\underline{F}_z(s)=(1-sT_z)\) mit \(T_z=1\); reelles Polglied \(\underline{F}_p(s)=\tfrac{1}{1+sT_p}\) mit \(T_p=\tfrac{1}{10}\).
+
+
+\item[2. Eckfrequenzen bestimmen und sortieren.] Die $\omega$-Eckfrequenzen lassen sich aus den $T_n$'s bestimmen und müssen anschließend sortiert werden:
+\[
+\omega_z=\frac{1}{T_z}=1\,\mathrm{rad/s},\qquad \omega_p=\frac{1}{T_p}=10\,\mathrm{rad/s},\qquad \omega_z<\omega_p.
+\]
+
+\item[3. Startpunkt des Amplitudengangs festlegen (Geradennäherung).]
+Wähle \(\omega_{\min}=\omega_z=1\). Regel:
+\[
+F_{\mathrm{dB}}(\omega_{\min})=20\log_{10}\!\big(|K_0F^*_{ges}(0)|\cdot\omega_{\min}^{\,r}\big)
+=20\log_{10}(1)=0\,\mathrm{dB}.
+\]
+Dieser Punkt ist der Anker der Geradennäherung.
+
+\item[4. Verlauf links vom Startpunkt zeichnen.]
+Für \(\omega<\omega_z\) bleibt die Amplituden-Asymptote bei \(0\,\mathrm{dB}\) konstant (Anfangssteigung \(r\cdot 20 \,\mathrm{dB}=0\)). Zeichne eine waagrechte Gerade links von der kleinsten Eckfrequenz.
+
+\item[5. Steigungswechsel an den Eckfrequenzen eintragen.]
+Ab der RHP-Nullstelle bei \(\omega_z=1\) nimmt die Steigung um \(+20\,\mathrm{dB/dec}\) zu.
+Der Pol bei \(\omega_p=10\) bewirkt einen zusätzlichen Steigungswechsel um \(-20\,\mathrm{dB/dec}\) ab \(\omega=10\).
+Netto:
+\[
+\begin{cases}
+0\,\mathrm{dB/dec},& \omega<1,\\
++20\,\mathrm{dB/dec},& 1\le\omega<10,\\
+0\,\mathrm{dB/dec},& \omega\ge 10\;\Rightarrow |H|\to 20\,\mathrm{dB}.
+\end{cases}
+\]
+Geradennäherungen:
+\[
+|H(j\omega)|_{\mathrm{dB}}\approx
+\begin{cases}
+0,& \omega\le 1,\\
+20\log_{10}\omega,& 1<\omega\le 10,\\
+20,& \omega\ge 10.
+\end{cases}
+\]
+
+\item[6. Eckabrundungen korrekt berücksichtigen.]
+RHP-Nullstelle: bei \(\omega=\omega_z\) liegt die exakte Magnitude um \(+3\,\mathrm{dB}\) über der Asymptote.
+Pol: bei \(\omega=\omega_p\) liegt die exakte Magnitude um \(-3\,\mathrm{dB}\) unter der Asymptote.
+Stützpunkte:
+\[
+|H(j1)|_{\mathrm{dB}}=20+10\log_{10}(2)-10\log_{10}(101)\approx +3\,\mathrm{dB},
+\]
+\[
+|H(j10)|_{\mathrm{dB}}=20+10\log_{10}(101)-10\log_{10}(200)\approx 17\,\mathrm{dB}.
+\]
+
+\item[7. Phasenstartwert festlegen.]
+Nutze die Regel für \(\omega\to 0\): Da \(K_0F_{ges}(0)>0\) und \(r=0\), ist der Startwert der Phase
+\[
+\varphi(0)=r \cdot 90^\circ=0^\circ.
+\]
+
+\item[8. Phasenänderung durch Nullstelle und Pol eintragen.]
+RHP-Nullstelle bei \(\omega_z=1\): Phasenänderung \(-90^\circ\) über die Dekade \([0.1,10]\) (Geradennäherung \(-45^\circ-45^\circ\log_{10}\omega\)).
+Pol bei \(\omega_p=10\): zusätzlicher Abfall um \(-90^\circ\) über \([1,100]\) (Geradennäherung \(-45^\circ-45^\circ\log_{10}(\omega/10)\)). Im Intervar $[1,10]$ überlagern sich diese Effekte.
+Gesamt:
+\[
+\varphi(\omega)\approx
+\begin{cases}
+0^\circ,& \omega\le 0.1,\\
+-45^\circ-45^\circ\log_{10}\omega,& 0.1<\omega\le 1,\\
+-45^\circ-90^\circ\log_{10}\omega,& 1<\omega\le 10,\\
+-135^\circ-45^\circ\log_{10}(\omega/10),& 10<\omega\le 100,\\
+-180^\circ,& \omega\ge 100.
+\end{cases}
+\]
+
+\item[9. Grenzwerte und Konsistenz prüfen.]
+DC: \(|H(0)|=1\Rightarrow 0\,\mathrm{dB}\), \(\varphi(0)=0^\circ\).
+HF: \(|H(j\omega)|\to 10\Rightarrow 20\,\mathrm{dB}\).
+Pol-/Nullzählung bestätigt die Endphase: Zählergrad \(m=-1\), Nennergrad \(n=1\) \(\Rightarrow (m-n)\cdot 90^\circ=0^\circ\); $m=-1$, da die Nullstelle RHP ist.
+
 \end{description}
 
-\vspace{0.5cm}
-\medskip
-\noindent\textbf{Stückweise Näherung}
+\subsubsection*{Stückweise Näherungen (für die Skizze)}
 \[
-|H(\j\omega)|_{\mathrm{dB}}\approx
+|H(j\omega)|_{\mathrm{dB}}\approx
 \begin{cases}
-0,& \omega\ll1,\\[4pt]
-20\log_{10}\omega,& 1\ll\omega\ll10,\\[4pt]
-20,& \omega\gg10,
+0,& \omega\ll 1,\\[2pt]
+20\log_{10}\omega,& 1\ll\omega\ll 10,\\[2pt]
+20,& \omega\gg 10,
 \end{cases}
-\qquad
 \]
+\[
+\varphi(\omega)\approx
+\begin{cases}
+0^\circ,& \omega\le 0.1,\\[2pt]
+-45^\circ-45^\circ\log_{10}\omega,& 0.1<\omega<1,\\[2pt]
+-45^\circ-90^\circ\log_{10}\omega,& 1<\omega<10,\\[2pt]
+-135^\circ-45^\circ\log_{10}(\omega/10),& 10<\omega<100,\\[2pt]
+-180^\circ,& \omega\ge 100.
+\end{cases}
+\]
+
 \newpage

@@ -57,24 +57,87 @@ H(s)=\frac{s+1}{s^2+2s+1}=\frac{1}{s+1}\,.
 \end{tikzpicture}
 \end{center}
 \newpage
-\subsection{Erklärung}
-\vspace{5mm}
+\subsection{Erklärung (ausführlich)}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] Kürzung: $s^2+2s+1=(s+1)^2\Rightarrow H(s)=\dfrac{s+1}{(s+1)^2}=\dfrac{1}{s+1}$. DC-Faktor $1$: für $\omega\ll1$ gilt $|H(\j\omega)|\approx1$; Betrag $0\,\mathrm{dB}$ ohne Anfangssteigung, Phase $\approx0^\circ$.
-\item[Schritt 2] Einfacher Pol bei $\omega_p=1\,\mathrm{rad/s}$: ab $\omega=1$ wechselt die Magnituden-Steigung um $-20\,\mathrm{dB/dec}$. Am Eckpunkt beträgt die exakte Dämpfung $-10\log_{10}2\approx-3\,\mathrm{dB}$ relativ zur Geraden. Phasenübergang über $\omega\in[0.1,10]$ von $0^\circ$ nach $-90^\circ$; Geradennäherung: $-45^\circ-45\log_{10}\omega$.
-\item[Schritt 3] Grenzverhalten: für $\omega\gg1$ folgt $|H(\j\omega)|_{\mathrm{dB}}\approx-20\log_{10}\omega$; die Phase nähert sich $-90^\circ$. Für $\omega\ll1$ bleibt $|H|\approx1$ und $\angle H\approx0^\circ$.
+
+\item[1. Normalform herstellen.]
+Bringe die Übertragungsfunktion exakt in die im Skript definierte Standardform.
+\[
+H(s)=\frac{1}{s+1}=K_0\cdot\frac{1}{1+sT_p}
+\]
+mit
+\[
+K_0=1,\quad r=0,\quad T_p=1.
+\]
+\[
+\underline{F}_1(s)=\frac{1}{1+sT_p}=\frac{1}{1+s}\quad\text{(reelles Polglied 1. Ordnung)}.
+\]
+
+\item[2. Eckfrequenz bestimmen und sortieren.]
+\[
+\omega_p=\frac{1}{T_p}=1\,\mathrm{rad/s}.
+\]
+Nur diese Eckfrequenz; Sortierung trivial.
+
+\item[3. Startpunkt des Amplitudengangs festlegen (Geradennäherung).]
+\[
+\omega_{\min}=\omega_p=1,\qquad
+F_{\mathrm{dB}}(\omega_{\min})=20\log_{10}\!\big(|K_0 F^*_{ges}(0)|\,\omega_{\min}^{\,r}\big)=0\,\mathrm{dB}.
+\]
+Ankerpunkt bei \(\omega=1 \,\mathrm{rad/s}\): \(0\,\mathrm{dB}\).
+
+\item[4. Verlauf links vom Startpunkt zeichnen.]
+Für \(\omega<1\) horizontale Asymptote bei \(0\,\mathrm{dB}\) (Anfangssteigung \(0\,\mathrm{dB/dec}\), da $r\cdot 20\,\mathrm{dB/dec} =0$).
+
+\item[5. Steigungswechsel an der Eckfrequenz eintragen.]
+Ein einfacher Pol bewirkt ab \(\omega_p\) eine Steigungsänderung von \(-20\,\mathrm{dB/dec}\).
+\[
+|H(j\omega)|_{\mathrm{dB}}\approx -20\log_{10}\omega\quad(\omega\ge 1).
+\]
+$\rightarrow$ Zeichne eine Gerade mit Steigung $-20 \,\mathrm{dB/dec}$ ab $\omega = 1\,\mathrm{rad/s}$
+
+\item[6. Eckabrundung korrekt berücksichtigen.]
+Am Knick \(\omega=\omega_p\) liegt der exakte Betrag um \(-3\,\mathrm{dB}\) unter der Asymptote:
+\[
+|H(j1)|_{\mathrm{dB}}=-10\log_{10}(1+1)=-10\log_{10}2\approx-3\,\mathrm{dB}.
+\]
+
+\item[7. Phasenstartwert festlegen.]
+\(K_0F_{ges}(0)>0\), \(r=0\) \(\Rightarrow\) \(\varphi(0)=r\cdot 90^\circ=0^\circ\).
+
+\item[8. Phasenänderung durch das Polglied eintragen.]
+Ein reelles Polglied 1. Ordnung erzeugt \(-90^\circ\) über die Übergangsdekade.
+\[
+\varphi(\omega)\approx
+\begin{cases}
+0^\circ,& \omega\le 0.1,\\
+-45^\circ-45^\circ\log_{10}\omega,& 0.1<\omega<10,\\
+-90^\circ,& \omega\ge 10.
+\end{cases}
+\]
+
+\item[9. Grenzwerte und Konsistenz prüfen.]
+DC: \(|H(0)|=1\Rightarrow 0\,\mathrm{dB}\), \(\varphi(0)=0^\circ\).
+HF: \(|H(j\omega)|\sim 1/\omega\Rightarrow -20\log_{10}\omega\,\mathrm{dB}\), \(\varphi(\infty)=-90^\circ\).
+Pol-/Nullzählung: \(m=0\), \(n=1\Rightarrow (m-n)\cdot90^\circ=-90^\circ\) konsistent.
+
 \end{description}
 
-\vspace{0.5cm}
-\medskip
-\noindent\textbf{Stückweise Näherung}
+\subsubsection*{Stückweise Näherungen (für die Skizze)}
 \[
-|H(\j\omega)|_{\mathrm{dB}}\approx
+|H(j\omega)|_{\mathrm{dB}}\approx
 \begin{cases}
-0,& \omega\ll1,\\[4pt]
--10\log_{10}2,& \omega=1,\\[4pt]
--20\log_{10}\omega,& \omega\gg1,
+0,& \omega\ll 1,\\[2pt]
+-10\log_{10}2,& \omega=1,\\[2pt]
+-20\log_{10}\omega,& \omega\gg 1,
 \end{cases}
-\qquad
+\]\[
+\varphi(\omega)\approx
+\begin{cases}
+0^\circ,& \omega\le 0.1,\\[2pt]
+-45^\circ-45^\circ\log_{10}\omega,& 0.1<\omega<10,\\[2pt]
+-90^\circ,& \omega\ge 10.
+\end{cases}
 \]
+
 \newpage

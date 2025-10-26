@@ -57,24 +57,61 @@ H(s)=\frac{1}{s}\,.
 \end{tikzpicture}
 \end{center}
 \newpage
-\subsection{Erklärung}
-\vspace{5mm}
+\subsection{Erklärung (ausführlich)}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] Pol im Ursprung: $H(s)=1/s$ liefert für alle $\omega>0$ die Betragsasymptote $|H(\j\omega)|_{\mathrm{dB}}=-20\log_{10}\omega$ mit konstanter Steigung $-20\,\mathrm{dB/dec}$; keine endliche Eckfrequenz. Wir benötigen ein Fixpunkt und wählen diesen beliebig bei $\omega = 1$ $\rightarrow$ $|H(1)|_{dB} = 20 log_{10}(1)\,\mathrm{dB} = 0\,\mathrm{dB}$
-\item[Schritt 2] Phase: $\angle(1/\j\omega)=-90^\circ$ für alle Frequenzen; keine Übergangsdekaden, daher rote Geradennäherung deckungsgleich mit dem exakten Verlauf.
-\item[Schritt 3] Grenzfälle: $\omega\to0^+$ $\Rightarrow$ $|H|\to\infty$ (Integrator), $\omega\to\infty$ $\Rightarrow$ $|H|\to0$; Phase bleibt stets $-90^\circ$.
+
+\item[1. Normalform herstellen.]
+\[
+H(s)=\frac{1}{s}=K_0\cdot s^{\,r},\qquad
+K_0=1,\quad r=-1.
+\]
+
+
+\item[2. Eckfrequenzen bestimmen und sortieren.]
+Keine endliche Eckfrequenz; nur Ursprungspol.
+
+\item[3. Startpunkt des Amplitudengangs festlegen (Geradennäherung).]
+Wähle Referenz \(\omega_{\mathrm{ref}}=1\,\mathrm{rad/s}\) (Fixpunkt).
+\[
+F_{\mathrm{dB}}(\omega_{\mathrm{ref}})=20\log_{10}\!\big(|K_0|\ \omega_{\mathrm{ref}}^{\,r}\big)
+=20\log_{10}(1^{\,{-1}})=0\,\mathrm{dB}.
+\]
+Ankerpunkt: \(0\,\mathrm{dB}\) bei \(\omega=1\).
+
+\item[4. Verlauf links vom Startpunkt zeichnen.]
+Konstante Steigung \(r\cdot 20\,\mathrm{dB/dec} =-20\,\mathrm{dB/dec}\) über alle Frequenzen. Gerade durch den Ankerpunkt mit Steigung \(-20\,\mathrm{dB/dec}\).
+
+\item[5. Steigungswechsel an den Eckfrequenzen eintragen.]
+Kein Steigungswechsel (keine endliche Ecke).
+
+\item[6. Eckabrundung korrekt berücksichtigen.]
+Keine Ecken \(\Rightarrow\) keine \(\pm 3/6/9\,\mathrm{dB}\)-Korrekturen.
+
+\item[7. Phasenstartwert festlegen.]
+Da \(K_0\,F^*_{\mathrm{ges}}(0)>0\) und \(r=-1\):
+\[
+\varphi(0)=r\cdot 90^\circ = -90^\circ.
+\]
+
+\item[8. Phasenänderung durch Teilglieder eintragen.]
+Nur Ursprungspol: Phase konstant \(-90^\circ\). Keine Überlappung, keine Addition weiterer Beiträge.
+
+\item[9. Grenzwerte und Konsistenz prüfen.]
+DC: \(|H(0)|\to\infty\Rightarrow +\infty\,\mathrm{dB}\), \(\varphi(0)=-90^\circ\).
+HF: \(|H(j\omega)|=1/\omega\Rightarrow -20\log_{10}\omega\,\mathrm{dB}\), \(\varphi(\infty)=-90^\circ\).
+
 \end{description}
 
-\vspace{0.5cm}
-\medskip
-\noindent\textbf{Stückweise Näherung}
+\subsubsection*{Stückweise Näherungen (für die Skizze)}
 \[
-|H(\j\omega)|_{\mathrm{dB}}\approx
+|H(j\omega)|_{\mathrm{dB}}\approx
 \begin{cases}
--20\log_{10}\omega,& \omega\ll1,\\[4pt]
-0,& \omega=1,\\[4pt]
--20\log_{10}\omega,& \omega\gg1,
+-20\log_{10}\omega,& \omega\ll 1,\\[2pt]
+0,& \omega=1,\\[2pt]
+-20\log_{10}\omega,& \omega\gg 1,
 \end{cases}
-\qquad
+\]\[
+\varphi(\omega)\approx -90^\circ\ \text{(für alle }\omega\text{)}.
 \]
+
 \newpage

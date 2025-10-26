@@ -59,24 +59,93 @@ H(s)=\frac{2\,s}{s^2+2s+1}=\frac{2\,s}{(s+1)^2}\,.
 \end{tikzpicture}
 \end{center}
 \newpage
-\subsection{Erklärung}
-\vspace{5mm}
+\subsection{Erklärung (ausführlich)}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] Nullstelle im Ursprung und Faktor $2$: für $\omega\ll1$ gilt $|H(\j\omega)|\approx 2\,\omega$ $\Rightarrow$ Startsteigung $+20\,\mathrm{dB/dec}$, Fixpunkt bei $|H(1j)|_{dB}=20\log_{10}1\approx0\,\mathrm{dB}$; Fixpunkt für Geradennäherung liegt ca. $6\,\mathrm{dB}$ über exakten Fixpunkt $0\,\mathrm{dB}$. Startphase $\approx+90^\circ$.
-\item[Schritt 2] Doppelter Pol bei $\omega=1\,\mathrm{rad/s}$: ab $\omega=1$ zusätzliche Steigungsänderung um $-40\,\mathrm{dB/dec}$; Netto-Slope für $\omega\gg1$ ist $-20\,\mathrm{dB/dec}$ ($|H|\sim 2/\omega$). Phasenabfall der beiden Pole zusammen $180^\circ$ über $\omega\in[0.1,10]$; Näherung: $45^\circ-90^\circ\log_{10}\omega$.
-\item[Schritt 3] Grenzverhalten: $\omega\ll1\Rightarrow |H|_{\mathrm{dB}}\approx 20\log_{10}2+20\log_{10}\omega$, $\angle H\approx+90^\circ$; $\omega\gg1\Rightarrow |H|_{\mathrm{dB}}\approx 20\log_{10}2-20\log_{10}\omega$, $\angle H\to-90^\circ$.
+
+\item[1. Normalform herstellen.]
+\[
+H(s)=\frac{2s}{(s+1)^2}
+=K_0\cdot s^{\,r}\cdot \frac{1}{(1+sT_p)^2}
+\]
+mit
+\[
+K_0=2,\quad r=1\ (\text{Nullstelle im Ursprung}),\quad T_p=1\ (\text{Doppelpol bei } \omega_p=1).
+\]
+Teilglieder:  \(\underline{F}_1(s)=\frac{1}{(1+s)^2}\) (reelles Polglied 2. Ordnung).
+
+\item[2. Eckfrequenz bestimmen und sortieren.]
+\[
+\omega_p=\frac{1}{T_p}=1\,\mathrm{rad/s}.
+\]
+Nur diese Eckfrequenz; Sortierung trivial.
+
+\item[3. Startpunkt des Amplitudengangs festlegen (Geradennäherung).]
+Setze \(\omega_{\min}=\omega_p=1\). Skript-Regel:
+\[
+F_{\mathrm{dB}}(\omega_{\min})=20\log_{10}\!\big(|K_0\,\underline{F}_{ges}^*(0)|\cdot \omega_{\min}^{\,r}\big)
+=20\log_{10}(2\cdot 1\cdot 1)=20\log_{10}2\approx +6\,\mathrm{dB}.
+\]
+Ankerpunkt der Geraden: \(+6\,\mathrm{dB}\) bei \(\omega=1\).
+
+\item[4. Verlauf links vom Startpunkt zeichnen.]
+Für \(\omega<1\) gilt Anfangssteigung \(r\cdot 20\,\mathrm{dB/dec}=+20\,\mathrm{dB/dec}\) (Nullstelle im Ursprung). Zeichne links vom Ankerpunkt eine Gerade mit \(+20\,\mathrm{dB/dec}\).
+
+\item[5. Steigungswechsel an der Eckfrequenz eintragen.]
+Doppelpol bei \(\omega=1\) bewirkt \(-40\,\mathrm{dB/dec}\) ab \(\omega=1\). Netto-Steigung:
+\[
+\begin{cases}
++20\,\mathrm{dB/dec},& \omega<1,\\
+-20\,\mathrm{dB/dec},& \omega>1
+\end{cases}
+\]
+(d.\,h.\ zwischen \(1\) und \(\infty\) fällt die Gerade mit \(-20\,\mathrm{dB/dec}\)).
+
+\item[6. Eckabrundung korrekt berücksichtigen.]
+Am Knick eines Doppelpols: \(-6\,\mathrm{dB}\) unter der Geradennäherung.
+\[
+|H(\j1)|_{\mathrm{dB}}\approx \underbrace{20\log_{10}2}_{\approx+6}\;-\;6=0\,\mathrm{dB}.
+\]
+
+\item[7. Phasenstartwert festlegen.]
+Regel mit Vorzeichen und Ursprungsnull:
+\[
+K_0\,\underline{F}_{ges}^*(0)>0,\quad r=1
+\;\Rightarrow\;
+\varphi(0)=r\cdot 90^\circ=1\cdot 90^\circ=+90^\circ.
+\]
+
+\item[8. Phasenänderung durch Nullstelle und Doppelpol eintragen.]
+Die Nullstelle im Ursprung liefert einen \emph{konstanten} Offset von \(+90^\circ\). Der Doppelpol bewirkt \(-180^\circ\) über die zwei Dekaden \([0.1,10]\) (je Pol \(-90^\circ\)). 
+\textbf{Überlappung/Addierung:} In der Übergangszone \([0.1,10]\) wirken beide Polbeiträge gleichzeitig und addieren ihre Steigungen (insgesamt \(-90^\circ/\text{dec}\)). Der Offset \(+90^\circ\) der Ursprungsnull bleibt währenddessen konstant. Damit fällt die Phase von \(+90^\circ\) (für \(\omega\ll0.1\)) über \(0^\circ\) (bei \(\omega\approx1\)) weiter auf \(-90^\circ\) (für \(\omega\gg10\)). Näherung:
+\[
+\varphi(\omega)\approx
+\begin{cases}
++90^\circ,& \omega\le 0.1,\\[2pt]
+\;\;0^\circ-90^\circ\log_{10}\omega,& 0.1<\omega<10,\\[2pt]
+-90^\circ,& \omega\ge 10.
+\end{cases}
+\]
+
+\item[9. Grenzwerte und Konsistenz prüfen.]
+DC: \(|H(0)|=0\Rightarrow -\infty\,\mathrm{dB}\), \(\varphi(0)=+90^\circ\).
+HF: \(|H(\j\omega)|\sim 2/\omega\Rightarrow 20\log_{10}2-20\log_{10}\omega\,\mathrm{dB}\), \(\varphi(\infty)=(r-2)\cdot90^\circ=(1-2)\cdot90^\circ=-90^\circ\) (Pol-/Nullzählung konsistent).
+
 \end{description}
 
-\vspace{0.5cm}
-\medskip
-\noindent\textbf{Stückweise Näherung}
+\subsubsection*{Stückweise Näherungen (für die Skizze)}
 \[
-|H(\j\omega)|_{\mathrm{dB}}\approx
+|H(j\omega)|_{\mathrm{dB}}\approx
 \begin{cases}
-20\log_{10}2+20\log_{10}\omega,& \omega\ll1,\\[4pt]
-\left.\;20\log_{10}2\;\right.-20\log_{10}2=0,& \omega=1,\\[4pt]
-20\log_{10}2-20\log_{10}\omega,& \omega\gg1,
+20\log_{10}2+20\log_{10}\omega,& \omega\ll 1,\\[2pt]
+\bigl(20\log_{10}2\bigr)-6=0,& \omega=1,\\[2pt]
+20\log_{10}2-20\log_{10}\omega,& \omega\gg 1,
 \end{cases}
-\qquad
+\]\[
+\varphi(\omega)\approx
+\begin{cases}
++90^\circ,& \omega\le 0.1,\\[2pt]
+0^\circ-90^\circ\log_{10}\omega,& 0.1<\omega<10,\\[2pt]
+-90^\circ,& \omega\ge 10.
+\end{cases}
 \]
 \newpage

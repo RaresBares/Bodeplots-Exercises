@@ -65,26 +65,108 @@ H(s)=\frac{10\sqrt{202}\,s}{(s+1)(s+10)}\,.
 \end{tikzpicture}
 \end{center}
 \newpage
-\subsection{Erklärung}
-\vspace{5mm}
+\subsection{Erklärung (ausführlich)}
 \begin{description}[leftmargin=1.2em,labelsep=.6em,font=\bfseries]
-\item[Schritt 1] Nullstelle im Ursprung: $H(s)=10\sqrt{202}\,\dfrac{s}{(s+1)(s+10)}$. Für $\omega\ll1$ gilt $|H(\j\omega)|\approx \sqrt{202}\,\omega$; Startsteigung $+20\,\mathrm{dB/dec}$ mit Fixniveau\footnote{Die Festlegung der ersten Geradennäherung gestaltet sich hier schwierig. Alternativ kann man die Verstärkung bei der Eckfrequenz $\omega=1$ ansetzen; dabei ist zu beachten, dass man den exakten Wert der blauen Kurve berechnet und dieser etwa $3\,\mathrm{dB}$ unter der Geradennäherung liegt, welche man dann einzeichnen muss.}$10\log_{10}202\,\mathrm{dB} = 23\,\mathrm{dB}$ bei $\omega = 5$. Startphase $\approx+90^\circ$.
-\item[Schritt 2] Pol bei $\omega_{p1}=1\,\mathrm{rad/s}$: ab $\omega=1$ Steigungswechsel um $-20\,\mathrm{dB/dec}$; Zwischenbereich $[1,10]$ ist betragsflach. Exakt $|H(\j1)|=\dfrac{10\sqrt{202}}{\sqrt{2}\sqrt{101}}=10\Rightarrow20\,\mathrm{dB}$ (symmetrische Ecklage). Phasenabfall um $90^\circ$ über $\omega\in[0.1,10]$; Geradennäherung $45^\circ-45^\circ\log_{10}\omega$.
-\item[Schritt 3] Pol bei $\omega_{p2}=10\,\mathrm{rad/s}$: ab $\omega=10$ weiterer Steigungswechsel um $-20\,\mathrm{dB/dec}$; Gesamtslope $\,-20\,\mathrm{dB/dec}$ für $\omega\gg10$. Auch hier $|H(\j10)|=\dfrac{100\sqrt{202}}{\sqrt{101}\sqrt{200}}=10\Rightarrow20\,\mathrm{dB}$. Der zweite Pol senkt die Phase um weitere $90^\circ$ in $\omega\in[1,100]$; Geradennäherung $-45^\circ\log_{10}(\omega/10)$, Grenzwert $\angle H\to-90^\circ$.
+
+\item[1. Normalform herstellen.]
+\[
+H(s)=\frac{10\sqrt{202}\,s}{(s+1)(s+10)}
+= K_0\cdot s^{\,r}\cdot \frac{1}{(1+sT_{p1})(1+sT_{p2})}
+\]
+mit
+\[
+K_0=\sqrt{202},\quad r=1,\quad T_{p1}=1,\quad T_{p2}=\tfrac{1}{10}.
+\]
+\[
+\underline{F}_1(s)=\frac{1}{1+sT_{p1}}=\frac{1}{1+s},\qquad
+\underline{F}_2(s)=\frac{1}{1+sT_{p2}}=\frac{1}{1+\tfrac{s}{10}}
+\]
+
+\item[2. Eckfrequenzen bestimmen und sortieren.]
+\[
+\omega_{p1}=\frac{1}{T_{p1}}=1\,\mathrm{rad/s},\qquad
+\omega_{p2}=\frac{1}{T_{p2}}=10\,\mathrm{rad/s},\qquad
+\omega_{p1}<\omega_{p2}.
+\]
+
+\item[3. Startpunkt des Amplitudengangs festlegen (Geradennäherung).]
+Setze \(\omega_{\min}=\omega_{p1}=1\).
+\[
+F_{\mathrm{dB}}(\omega_{\min})
+=20\log_{10}\!\Big(|K_0\underline{F}_{ges}^*(0)|\,\omega_{\min}^{\,r}\Big)
+=20\log_{10}(\sqrt{202}\cdot 1) \approx 23\,\mathrm{dB}.
+\]
+Ankerpunkt: \(23\,\mathrm{dB}\) bei \(\omega=1\).
+
+\item[4. Verlauf links vom Startpunkt zeichnen.]
+Für \(\omega<1\): Anfangssteigung \(r\cdot 20=+20\,\mathrm{dB/dec}\). Zeichne links vom Startpunkt die Gerade mit \(+20\,\mathrm{dB/dec}\) durch den Ankerpunkt.
+
+\item[5. Steigungswechsel an den Eckfrequenzen eintragen.]
+Pol bei \(\omega_{p1}=1\): Steigungsänderung \(-20\,\mathrm{dB/dec}\) \(\Rightarrow\) Netto \(0\,\mathrm{dB/dec}\) in \([1,10]\) (betragsflach).
+Pol bei \(\omega_{p2}=10\): weitere \(-20\,\mathrm{dB/dec}\) \(\Rightarrow\) Netto \(-20\,\mathrm{dB/dec}\) für \(\omega\gg10\).
+Geradennäherung:
+\[
+|H(j\omega)|_{\mathrm{dB}}\approx
+\begin{cases}
+10\log_{10}202+20\log_{10}\omega,& \omega\le 1,\\
+10\log_{10}202,& 1<\omega\le 10,\\
+10\log_{10}202-20\log_{10}(\omega/10),& \omega\ge 10.
+\end{cases}
+\]
+
+\item[6. Eckabrundungen korrekt berücksichtigen.]
+Jeder einfache Pol: \(-3\,\mathrm{dB}\) unter der Geradennäherung am Knick.
+\[
+|H(j1)|_{\mathrm{dB}}\approx 10\log_{10}202-3\ \mathrm{dB}\ \ (\approx 20\,\mathrm{dB}),\]\[
+|H(j10)|_{\mathrm{dB}}\approx 10\log_{10}202-3\ \mathrm{dB}\ \ (\approx 20\,\mathrm{dB}).
+\]
+
+\item[7. Phasenstartwert festlegen.]
+Verwende die Regel für $K_0\underline{F}_{ges}^*(0) > 0$
+\[
+\varphi(0)= r\cdot 90^\circ = 1\cdot 90^\circ = +90^\circ.
+\]
+
+\item[8. Phasenänderung durch die Polglieder eintragen.]
+Nullstelle im Ursprung liefert konstant \(+90^\circ\). Pol bei \(1\): \(-90^\circ\) über \([0.1,10]\). Pol bei \(10\): \(-90^\circ\) über \([1,100]\). In \([1,10]\) überlappen sich beide Polbeiträge und addieren sich (Netto-Steilheit = Summe der Einzelsteilheiten). Näherung:
+\[
+\varphi(\omega)\approx
+\begin{cases}
++90^\circ,& \omega\le 0.1,\\
+45^\circ-45^\circ\log_{10}\omega + 90^\circ,& 0.1<\omega<1,\\
+45^\circ-90^\circ\log_{10}\omega + 90^\circ,& 1<\omega<10,\\
+-45^\circ-45^\circ\log_{10}(\omega/10),& 10<\omega<100,\\
+-90^\circ,& \omega\ge 100.
+\end{cases}
+\]
+(vereinfacht im Plot als \(90- \arctan\omega - \arctan(\omega/10)\) gezeigt; Grenzwert \(\varphi(\infty)=-90^\circ\)).
+
+\item[9. Grenzwerte und Konsistenz prüfen.]
+DC: \(|H(0)|=0\Rightarrow -\infty\,\mathrm{dB}\), \(\varphi(0)=+90^\circ\).
+HF: \(|H(j\omega)|\sim \sqrt{202}\,\frac{\omega}{\omega^2/10}= \sqrt{202}\cdot \frac{10}{\omega}\Rightarrow 10\log_{10}202-20\log_{10}(\omega/10)\,\mathrm{dB}\), \(\varphi(\infty)=+90^\circ-180^\circ=-90^\circ\).
+Pol-/Nullzählung: \(m=1\), \(n=2\Rightarrow (m-n)\cdot 90^\circ=-90^\circ\) konsistent.
+
 \end{description}
 
-\vspace{0.5cm}
-\medskip
-\noindent\textbf{Stückweise Näherung}
+\subsubsection*{Stückweise Näherungen (für die Skizze)}
 \[
-|H(\j\omega)|_{\mathrm{dB}}\approx
+|H(j\omega)|_{\mathrm{dB}}\approx
 \begin{cases}
-10\log_{10}202+20\log_{10}\omega,& \omega\ll1,\\[4pt]
-20,& \omega=1,\\[4pt]
-10\log_{10}202,& 1\ll\omega\ll10,\\[4pt]
-20,& \omega=10,\\[4pt]
-10\log_{10}202-20\log_{10}(\omega/10),& \omega\gg10,
+10\log_{10}202+20\log_{10}\omega,& \omega\ll 1,\\[2pt]
+10\log_{10}202-3,& \omega=1,\\[2pt]
+10\log_{10}202,& 1\ll\omega\ll 10,\\[2pt]
+10\log_{10}202-3,& \omega=10,\\[2pt]
+10\log_{10}202-20\log_{10}(\omega/10),& \omega\gg 10,
 \end{cases}
-\qquad
+\]\[
+\varphi(\omega)\approx
+\begin{cases}
++90^\circ,& \omega\le 0.1,\\[2pt]
+45^\circ-45^\circ\log_{10}\omega + 90^\circ,& 0.1<\omega<1,\\[2pt]
+45^\circ-90^\circ\log_{10}\omega + 90^\circ,& 1<\omega<10,\\[2pt]
+-45^\circ-45^\circ\log_{10}(\omega/10),& 10<\omega<100,\\[2pt]
+-90^\circ,& \omega\ge 100.
+\end{cases}
 \]
+
 \newpage
